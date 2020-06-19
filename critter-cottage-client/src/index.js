@@ -4,13 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import { createStore } from 'react';
-import animalReducer from './src/reducers/animalReducer';
+import { createStore } from 'redux';
+import animalReducer from './reducers/animalReducer';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
-const store = createStore(
-  animalReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+const store = createStore(animalReducer)
 
 ReactDOM.render(
   <Provider store={store}>
