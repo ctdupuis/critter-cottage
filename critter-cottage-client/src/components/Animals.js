@@ -6,7 +6,7 @@ export default class Animals extends Component {
         return (
             <div>
                 {this.props.animals.map(animal => {
-                    return(<Animal animal={animal} />)
+                    return(<Animal key={animal.id} animal={animal} />)
                 })}
             </div>
         )

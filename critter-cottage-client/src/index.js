@@ -6,7 +6,6 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import animalReducer from './reducers/animalReducer';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
 const store = createStore(animalReducer)
 

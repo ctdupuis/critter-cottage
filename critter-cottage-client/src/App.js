@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Route path='/' component={Home} />
+        <Route exact path='/' component={Home} />
         <Route exact path='/animals' component={AnimalsContainer} />
       </div>
     </Router>

@@ -24,6 +24,7 @@ export default class AnimalInput extends Component {
     render() {
         return (
             <div>
+                <h3>Add an Animal</h3>
                 <form onSubmit={this.handleOnSubmit}>
                     <label>Name</label>
                     <input type='text' name='name' value={this.state.name} onChange={this.handleOnChange} />
