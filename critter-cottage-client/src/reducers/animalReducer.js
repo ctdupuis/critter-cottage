@@ -4,6 +4,7 @@ export default function animalReducer(
     },
      action
 ) {
+    debugger
     switch (action.type) {
         case 'ADD_ANIMAL':
             return {

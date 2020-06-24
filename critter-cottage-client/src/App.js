@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
+import AnimalsContainer from './containers/AnimalsContainer';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <Router>
       <div>
         <Route path='/' component={Home} />
+        <Route exact path='/animals' component={AnimalsContainer} />
       </div>
     </Router>
   );
