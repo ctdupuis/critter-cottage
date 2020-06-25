@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
-import AnimalsContainer from './containers/AnimalsContainer';
+import AnimalsContainer from './containers/animals/AnimalsContainer';
 
 
 function App() {

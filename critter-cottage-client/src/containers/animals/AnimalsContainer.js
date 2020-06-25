@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import AnimalInput from '../components/AnimalInput'
-import Animals from '../components/Animals'
+import AnimalInput from '../../components/animals/AnimalInput'
+import Animals from '../../components/animals/Animals'
 
 class AnimalsContainer extends Component {
 
