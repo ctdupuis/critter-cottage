@@ -5,7 +5,12 @@ export default class Animal extends Component {
         const { animal } = this.props
         return (
             <div>
-                {animal.name} | {animal.species}
+                <div>
+                    {animal.name} | {animal.species} | {animal.gender}
+                </div>
+                <div>
+                    Bio: {animal.bio}
+                </div>
             </div>
         )
     }
