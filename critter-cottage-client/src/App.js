@@ -6,6 +6,7 @@ import {
   Route
 } from 'react-router-dom';
 import AnimalsContainer from './containers/animals/AnimalsContainer';
+import { connect } from 'react-redux'
 
 
 function App() {
@@ -19,4 +20,10 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(App);

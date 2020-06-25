@@ -7,7 +7,10 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import animalReducer from './reducers/animalReducer';
 
-const store = createStore(animalReducer)
+const store = createStore(
+  animalReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 ReactDOM.render(
   <Provider store={store}>
