@@ -13,7 +13,7 @@ function App() {
     <Router>
       <div>
         <Route exact path='/' component={Home} />
-        <Route exact path='/animals' component={AnimalsContainer} />
+        <Route path='/animals' render={routerProps => <AnimalsContainer {...routerProps} />} />
       </div>
     </Router>
   );
