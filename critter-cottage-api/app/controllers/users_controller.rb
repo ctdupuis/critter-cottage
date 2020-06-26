@@ -8,13 +8,14 @@ class UsersController < ApplicationController
     end
 
     def login
-        binding.pry
-        # user = User.find(params[:email])
-        # if user && user.authenticate(params[:password])
-        #     render json: user
-        # else
-        #     render json: { error: 'Something went wrong' }
-        # end
+        # binding.pry
+        user = User.find_by(email: params[:email])
+        # binding.pry
+        if user && user.authenticate(params[:password])
+            render json: user, only: [:email]
+        else
+            render json: { error: 'Something went wrong' }
+        end
     end
 
 end

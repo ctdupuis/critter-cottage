@@ -15,6 +15,12 @@ export default function animalReducer(
                 ...state,
                 animals: [...state.animals, action.animal]
             }
+        case 'LOGIN_USER':
+            console.log(action.user.email)
+            return {
+                ...state,
+                currentUser: action.user.email
+            }
         default: return state;
     }
 }

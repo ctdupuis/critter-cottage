@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
     state = {
         email: '',
         password: '',
@@ -15,14 +16,6 @@ export default class LoginForm extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault()
-        // let configObj = {
-        //     method: "POST",
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //       "Accept": "application/json"
-        //     },
-        //     body: JSON.stringify({email: 'user@place.com', password: 'pass'})
-        // };
         let userdata = {
             email: this.state.email,
             password: this.state.password
@@ -37,7 +30,12 @@ export default class LoginForm extends Component {
                 body: JSON.stringify(userdata)
             })
         .then(r => r.json())
-        .then(data => console.log(data))
+        .then(user => this.props.login(user))
+        this.setState({
+            email: '',
+            password: '',
+            redirect: false
+        })
     }
 
     render() {
@@ -64,3 +62,17 @@ export default class LoginForm extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        currentUser: state.email
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        login: user => dispatch({ type: 'LOGIN_USER', user })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
