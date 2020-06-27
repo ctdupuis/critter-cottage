@@ -9,6 +9,7 @@ import AnimalsContainer from './containers/animals/AnimalsContainer';
 import { connect } from 'react-redux'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm';
+import NavBar from './components/NavBar'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   return (
     <Router>
       <div>
+        <NavBar />
         <Route exact path='/' component={Home}  />
         <Route path='/animals' render={routerProps => <AnimalsContainer  {...routerProps} />} />
         <Route path='/login' render={routerProps => <LoginForm {...routerProps} />} />

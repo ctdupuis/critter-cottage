@@ -18,9 +18,9 @@ class AnimalsContainer extends Component {
     render() {
         return (
             <React.Fragment>
-            <Route exact path={'/animals/new'} render={(routerProps) => <AnimalInput {...routerProps} addAnimal={this.props.addAnimal}/> } />
+            <Route exact path={'/animals/new'} render={routerProps => <AnimalInput {...routerProps} addAnimal={this.props.addAnimal}/> } />
             <Route exat path={'/animals/:animalID'} render={routerProps => <AnimalShow {...routerProps} animals={this.props.animals} />} />
-            <Route exact path={'/animals'} render={(routerProps) => <AnimalsPage {...routerProps} animals={this.props.animals} />} />
+            <Route exact path={'/animals'} render={routerProps => <AnimalsPage {...routerProps} animals={this.props.animals} />} />
             </React.Fragment>
         )
     }

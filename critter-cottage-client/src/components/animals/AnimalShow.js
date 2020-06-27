@@ -8,7 +8,7 @@ const AnimalShow = ({ animals, match }) => {
     const animal = animals.find(animal => animal.id === parseInt(match.params.animalID))
     const renderCard = animal => {
         return(<div>
-            <span>{animal.name} | {genderSym[animal.gender]}</span>
+            <span>{animal.name} ({genderSym[animal.gender]})</span>
             <span>{animal.species}: {animal.breed}</span>
         </div>)
     }
