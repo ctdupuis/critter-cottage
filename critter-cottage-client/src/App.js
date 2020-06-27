@@ -7,7 +7,8 @@ import {
 } from 'react-router-dom';
 import AnimalsContainer from './containers/animals/AnimalsContainer';
 import { connect } from 'react-redux'
-import LoginForm from './LoginForm'
+import LoginForm from './components/LoginForm'
+import SignupForm from './components/SignupForm';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route exact path='/' component={Home}  />
         <Route path='/animals' render={routerProps => <AnimalsContainer  {...routerProps} />} />
         <Route path='/login' render={routerProps => <LoginForm {...routerProps} />} />
+        <Route path='/signup' render={routerProps => <SignupForm {...routerProps} />} />
       </div>
     </Router>
   );

@@ -20,7 +20,6 @@ export default function animalReducer(
                 animals: action.animals
             }
         case 'LOGIN_USER':
-            console.log(action.user.email)
             return {
                 ...state,
                 currentUser: action.user

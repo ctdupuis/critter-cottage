@@ -11,7 +11,10 @@ export default class Home extends Component {
             <div>
                 Welcome to Critter Cottage!
                 <Link to={'/animals'}>See Animals</Link>
-                <Link to={'/login'}>Login</Link>
+                |
+                <Link to={'/login'}>Log In</Link>
+                |
+                <Link to={'/signup'}>Sign Up</Link>
             </div>
         )
     }
