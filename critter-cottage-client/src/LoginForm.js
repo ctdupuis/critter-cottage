@@ -31,12 +31,18 @@ class LoginForm extends Component {
                 body: JSON.stringify(userdata)
             })
         .then(r => r.json())
-        .then(user => this.props.login(user))
-        this.setState({
-            email: '',
-            password: '',
+        .then(user => {
+            if (user.error) {
+                this.setState({ error: user.error })
+            } else {
+                this.props.login(user)
+                this.setState({
+                    email: '',
+                    password: '',
+                })
+                this.setRedirect()
+            }
         })
-        this.setRedirect()
     }
 
     setRedirect = () => {
@@ -45,6 +51,12 @@ class LoginForm extends Component {
         })
     }
 
+    renderError = () => {
+        if (this.state.error) {
+            return <div>{this.state.error}</div>
+        }
+    }
+    
     renderRedirect = () => {
         if (this.state.redirect) {
             return <Redirect to={'/animals'} />
@@ -54,6 +66,7 @@ class LoginForm extends Component {
     render() {
         return (
             <div>
+                {this.renderError()}
                 {this.renderRedirect()}
                 <form method="POST" onSubmit={this.handleOnSubmit}>
                     <label>Email</label>

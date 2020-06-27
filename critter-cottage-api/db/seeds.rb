@@ -6,17 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(email: 'user@place.com', password: 'pass', admin: true)
-
-seeds = [
-    {name: 'Milo', gender: 'Male'},
-    {name: 'Cooper', gender: 'Male'},
-    {name: 'Flick', gender: 'Male'},
-    {name: 'Parker', gender: 'Male'},
-    {name: 'Sofie', gender: 'Female'}
+users = [
+    {email: 'boss@admin.com', password: 'boss', admin: true, f_name: 'Top', l_name: 'Dog'},
+    {email: 'user@place.com', password: 'pass', admin: false, f_name: 'New', l_name: 'User'}
 ]
 
-seeds.each{ |animal| Animal.create(animal) }
-# milo = Animal.create(name: 'Milo', gender: 'Male')
-# flick = Animal.create(name: 'Flick', gender: 'Male')
-# coops = Animal.create(name)
+animals = [
+    {name: 'Milo', gender: 'Male', species: 'Dog', breed: 'Mutt'},
+    {name: 'Cooper', gender: 'Male', species: 'Dog', breed: 'Poodle'},
+    {name: 'Flick', gender: 'Male', species: 'Lizard', breed: 'Red Dragon'},
+    {name: 'Parker', gender: 'Male', species: 'Dog', breed: 'Labrador Retriever'},
+    {name: 'Sofie', gender: 'Female', species: 'Dog', breed: 'Maltese'},
+    {name: 'Grace Kelly', gender: 'Female', species: 'Bird', breed: 'Cockatiel'},
+    {name: 'Lil Sebastian', gender: 'Male', species: 'Horse', breed: 'Miniature'}
+]
+
+animals.each{ |animal| Animal.create(animal) }
+users.each{ |user| User.create(user) }

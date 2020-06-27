@@ -10,7 +10,7 @@ export default class Animal extends Component {
         return (
             <div>
                 <div>
-                    {animal.name} | {genderSym[animal.gender]}
+                    {animal.name} | {animal.species}: {animal.breed} | {genderSym[animal.gender]}
                 </div>
             </div>
         )

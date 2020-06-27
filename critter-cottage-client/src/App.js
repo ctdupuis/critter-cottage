@@ -16,7 +16,7 @@ function App() {
     <Router>
       <div>
         <Route exact path='/' component={Home}  />
-        <Route path='/animals' render={routerProps => <AnimalsContainer {...routerProps} />} />
+        <Route path='/animals' render={routerProps => <AnimalsContainer  {...routerProps} />} />
         <Route path='/login' render={routerProps => <LoginForm {...routerProps} />} />
       </div>
     </Router>
