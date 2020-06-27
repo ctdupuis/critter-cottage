@@ -1,19 +1,23 @@
-import cuid from 'cuid';
-// cuidFn
 
 export default function animalReducer(
     state = { 
-        animals: []
+        animals: [],
+        requesting: false
     },
      action
 ) {
     switch (action.type) {
-        case 'ADD_ANIMAL':
-            const animal = Object.assign({animal: action.animal}, {id: cuid()})
-            console.log(animal)
+        case 'START_STORE_REQUEST':
             return {
                 ...state,
-                animals: [...state.animals, action.animal]
+                animals: [...state.animals],
+                requesting: true
+            }
+        case 'ADD_ANIMAL':
+            return {
+                ...state,
+                animals: [...state.animals, action.animal],
+                requesting: false
             }
         case 'STORE_ANIMALS':
             return {
