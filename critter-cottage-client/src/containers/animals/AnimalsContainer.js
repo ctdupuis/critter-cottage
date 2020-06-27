@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import AnimalInput from '../../components/animals/AnimalInput'
-import Animals from '../../components/animals/Animals'
+import AnimalsPage from '../../components/animals/AnimalsPage'
 import { Route } from 'react-router-dom';
 import { fetchAnimals } from '../../actions/animals'
+import AnimalShow from '../../components/animals/AnimalShow';
 
 
 class AnimalsContainer extends Component {
@@ -16,10 +17,11 @@ class AnimalsContainer extends Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
             <Route exact path={'/animals/new'} render={(routerProps) => <AnimalInput {...routerProps} addAnimal={this.props.addAnimal}/> } />
-            <Route exact path={'/animals'} render={() => <Animals animals={this.props.animals} />} />
-            </div>
+            <Route exat path={'/animals/:animalID'} render={routerProps => <AnimalShow {...routerProps} animals={this.props.animals} />} />
+            <Route exact path={'/animals'} render={(routerProps) => <AnimalsPage {...routerProps} animals={this.props.animals} />} />
+            </React.Fragment>
         )
     }
 }

@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class AnimalCard extends Component {
     render() {
@@ -10,7 +11,7 @@ export default class AnimalCard extends Component {
         return (
             <div>
                 <div>
-                    {animal.name} | {animal.species}: {animal.breed} | {genderSym[animal.gender]}
+                    <Link to={`/animals/${animal.id}`}>{animal.name} | {animal.species}: {animal.breed} | {genderSym[animal.gender]} </Link>
                 </div>
             </div>
         )
