@@ -15,11 +15,22 @@ export default function animalReducer(
                 ...state,
                 animals: [...state.animals, action.animal]
             }
+        case 'STORE_ANIMALS':
+            //  console.log(action.animals)
+            return {
+                ...state,
+                animals: [action.animals]
+            }
         case 'LOGIN_USER':
             console.log(action.user.email)
             return {
                 ...state,
-                currentUser: action.user.email
+                currentUser: action.user
+            }
+        case 'LOGOUT_USER':
+            return {
+                ...state,
+                currentUser: null
             }
         default: return state;
     }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default class Home extends Component {
     componentDidMount() {
-        console.log('Fetch and store animals here IF NOT ALREADY DONE')
+        console.log('hellow')
     }
 
     render() {

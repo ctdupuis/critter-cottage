@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 class LoginForm extends Component {
     state = {
@@ -34,13 +35,26 @@ class LoginForm extends Component {
         this.setState({
             email: '',
             password: '',
-            redirect: false
         })
+        this.setRedirect()
+    }
+
+    setRedirect = () => {
+        this.setState({
+            redirect: true
+        })
+    }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to={'/animals'} />
+        }
     }
 
     render() {
         return (
             <div>
+                {this.renderRedirect()}
                 <form method="POST" onSubmit={this.handleOnSubmit}>
                     <label>Email</label>
                     <input 

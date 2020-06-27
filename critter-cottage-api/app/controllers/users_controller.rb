@@ -12,7 +12,7 @@ class UsersController < ApplicationController
         user = User.find_by(email: params[:email])
         # binding.pry
         if user && user.authenticate(params[:password])
-            render json: user, only: [:email]
+            render json: user, only: [:email, :admin]
         else
             render json: { error: 'Something went wrong' }
         end

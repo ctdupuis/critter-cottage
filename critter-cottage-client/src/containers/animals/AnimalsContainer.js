@@ -6,6 +6,12 @@ import { Route } from 'react-router-dom';
 
 class AnimalsContainer extends Component {
 
+    componentDidMount() {
+        fetch('http://localhost:3001/animals')
+        .then(r => r.json())
+        .then(animals => this.props.storeAnimals(animals))
+    }
+
     render() {
         return (
             <div>
@@ -24,7 +30,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addAnimal: animal => dispatch({type: 'ADD_ANIMAL', animal})
+        addAnimal: animal => dispatch({type: 'ADD_ANIMAL', animal}),
+        storeAnimals: animals => dispatch({type: 'STORE_ANIMALS', animals})
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AnimalsContainer)
