@@ -5,7 +5,4 @@ export function fetchAnimals() {
         .then(response => response.json())
         .then(animals => dispatch({ type: 'STORE_ANIMALS', animals }));
     };
-  }
-// export const storeAnimals = animals => {
-//     return ({type: 'STORE_ANIMALS', animals })
-// }
+}

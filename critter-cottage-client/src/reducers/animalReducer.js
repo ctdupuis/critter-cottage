@@ -1,8 +1,7 @@
 
 export default function animalReducer(
     state = { 
-        animals: [],
-        requesting: false
+        animals: []
     },
      action
 ) {
@@ -22,16 +21,6 @@ export default function animalReducer(
         case 'STORE_ANIMALS':
             return {
                 animals: action.animals
-            }
-        case 'LOGIN_USER':
-            return {
-                ...state,
-                currentUser: action.user
-            }
-        case 'LOGOUT_USER':
-            return {
-                ...state,
-                currentUser: null
             }
         default: return state;
     }

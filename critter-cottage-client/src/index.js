@@ -6,10 +6,10 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import animalReducer from './reducers/animalReducer';
+import rootReducer from './reducers/rootReducer';
 
 const store = createStore(
-  animalReducer,
+  rootReducer,
   compose(
     applyMiddleware(thunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Animal from './Animal'
+import AnimalCard from './AnimalCard'
 import { Link } from 'react-router-dom';
 
 export default class Animals extends Component {
     render() {
         const animals = this.props.animals.map(animal => {
-            return (<Animal key={animal.id} animal={animal} />)
+            return (<AnimalCard key={animal.id} animal={animal} />)
         })
         return (
             <div>

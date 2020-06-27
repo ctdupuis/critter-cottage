@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Animal extends Component {
+export default class AnimalCard extends Component {
     render() {
         const { animal } = this.props
         const genderSym = {

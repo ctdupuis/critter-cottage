@@ -6,8 +6,8 @@ animals need a show page
 a user can adopt an animal, so a user has one or many animals?
 maybe make crud functionality only for admin
 
-need actions to export/import
-combine reducers at some point
+need actions to export/import for users
+
 ***sessions - logging in, logging out, signing up***
 may need a sessions container
 
