@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 export default class Animals extends Component {
     render() {
-        const animals = this.props.animals.map((animal, index) => {
-            return(<Animal key={animal[index].id} animal={animal[index]} />)
+        const animals = this.props.animals.map(animal => {
+            return (<Animal key={animal.id} animal={animal} />)
         })
         return (
             <div>

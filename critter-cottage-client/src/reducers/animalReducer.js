@@ -16,10 +16,8 @@ export default function animalReducer(
                 animals: [...state.animals, action.animal]
             }
         case 'STORE_ANIMALS':
-            //  console.log(action.animals)
             return {
-                ...state,
-                animals: [action.animals]
+                animals: action.animals
             }
         case 'LOGIN_USER':
             console.log(action.user.email)

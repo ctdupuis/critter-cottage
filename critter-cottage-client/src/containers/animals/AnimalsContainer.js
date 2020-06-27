@@ -7,9 +7,11 @@ import { Route } from 'react-router-dom';
 class AnimalsContainer extends Component {
 
     componentDidMount() {
-        fetch('http://localhost:3001/animals')
-        .then(r => r.json())
-        .then(animals => this.props.storeAnimals(animals))
+        if (this.props.animals.length < 1) {
+            fetch('http://localhost:3001/animals')
+            .then(r => r.json())
+            .then(animals => this.props.storeAnimals(animals))
+        }
     }
 
     render() {
