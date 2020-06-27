@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './App.css';
 import Home from './components/Home'
 import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
-import AnimalsContainer from './containers/animals/AnimalsContainer';
+import AnimalsContainer from './containers/AnimalsContainer';
 import { connect } from 'react-redux'
-import LoginForm from './components/LoginForm'
-import SignupForm from './components/SignupForm';
+import SessionsContainer from './containers/SessionsContainer';
 import NavBar from './components/NavBar'
 
 
@@ -16,13 +15,14 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <Fragment>
         <NavBar />
         <Route exact path='/' component={Home}  />
         <Route path='/animals' render={routerProps => <AnimalsContainer  {...routerProps} />} />
-        <Route path='/login' render={routerProps => <LoginForm {...routerProps} />} />
-        <Route path='/signup' render={routerProps => <SignupForm {...routerProps} />} />
-      </div>
+        <SessionsContainer />
+        {/* <Route path='/login' render={routerProps => <LoginForm {...routerProps} />} />
+        <Route path='/signup' render={routerProps => <SignupForm {...routerProps} />} /> */}
+      </Fragment>
     </Router>
   );
 }
