@@ -18,8 +18,8 @@ class UsersController < ApplicationController
     end
 
     def login
-        # binding.pry
         user = User.find_by(email: params[:email])
+        # binding.pry
         if !user 
             render json: { error: 'Email is invalid or could not be found' }
 

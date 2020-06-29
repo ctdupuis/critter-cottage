@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { login } from '../../actions/sessions'
 
 class LoginForm extends Component {
     state = {
@@ -8,6 +9,19 @@ class LoginForm extends Component {
         password: '',
         redirect: false
     }
+
+    shouldComponentUpdate() {
+        return (this.state.error) ? true : false
+    }
+
+    componentDidUpdate() {
+        this.setRedirect()
+        this.setState({
+            email: '',
+            password: ''
+        })
+    }
+
     
     handleOnChange = event => {
         this.setState({
@@ -21,31 +35,38 @@ class LoginForm extends Component {
             email: this.state.email,
             password: this.state.password
         }
+        this.props.login(userdata)
+        console.log(this.state)
+        // this.setState({
+        //     email: '',
+        //     password: ''
+        // })
+        // this.setRedirect();
 
-        fetch('http://localhost:3001/login', {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  "Accept": "application/json"
-                },
-                body: JSON.stringify(userdata)
-            })
-        .then(r => r.json())
-        .then(user => {
-            if (user.error) {
-                this.setState({ error: user.error })
-            } else {
-                this.props.login(user)
-                this.setState({
-                    email: '',
-                    password: '',
-                })
-                this.setRedirect()
-            }
-        })
+        // fetch('http://localhost:3001/login', {
+        //         method: "POST",
+        //         headers: {
+        //           "Content-Type": "application/json",
+        //           "Accept": "application/json"
+        //         },
+        //         body: JSON.stringify(userdata)
+        //     })
+        // .then(r => r.json())
+        // .then(user => {
+        //     if (user.error) {
+        //         this.setState({ error: user.error })
+        //     } else {
+        //         this.props.login(user)
+        //         this.setState({
+        //             email: '',
+        //             password: '',
+        //         })
+        //         this.setRedirect()
+        //     }
+        // })
     }
 
-    setRedirect = () => {
+    setRedirect = () => { 
         this.setState({
             redirect: true
         })
@@ -59,7 +80,7 @@ class LoginForm extends Component {
     
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to={'/animals'} />
+            return <Redirect to={'/'} />
         }
     }
 
@@ -90,16 +111,6 @@ class LoginForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        currentUser: state.email
-    }
-}
 
-const mapDispatchToProps = dispatch => {
-    return {
-        login: user => dispatch({ type: 'LOGIN_USER', user })
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
+export default connect(null, { login })(LoginForm)
+// export default LoginForm;

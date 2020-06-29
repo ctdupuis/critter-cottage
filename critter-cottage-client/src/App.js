@@ -20,8 +20,6 @@ function App() {
         <Route exact path='/' component={Home}  />
         <Route path='/animals' render={routerProps => <AnimalsContainer  {...routerProps} />} />
         <SessionsContainer />
-        {/* <Route path='/login' render={routerProps => <LoginForm {...routerProps} />} />
-        <Route path='/signup' render={routerProps => <SignupForm {...routerProps} />} /> */}
       </Fragment>
     </Router>
   );
