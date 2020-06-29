@@ -16,7 +16,7 @@ function App() {
   return (
     <Router>
       <Fragment>
-        <NavBar currentUser={this.props.currentUser} />
+        <NavBar />
         <Route exact path='/' component={Home}  />
         <Route path='/animals' render={routerProps => <AnimalsContainer  {...routerProps} />} />
         <SessionsContainer />
