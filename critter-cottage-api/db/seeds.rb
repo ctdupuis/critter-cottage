@@ -13,13 +13,21 @@ users = [
 
 animals = [
     {name: 'Milo', gender: 'Male', species: 'Dog', breed: 'Mutt'},
-    {name: 'Cooper', gender: 'Male', species: 'Dog', breed: 'Poodle'},
-    {name: 'Flick', gender: 'Male', species: 'Lizard', breed: 'Red Dragon'},
-    {name: 'Parker', gender: 'Male', species: 'Dog', breed: 'Labrador Retriever'},
-    {name: 'Sofie', gender: 'Female', species: 'Dog', breed: 'Maltese'},
-    {name: 'Grace Kelly', gender: 'Female', species: 'Bird', breed: 'Cockatiel'},
-    {name: 'Lil Sebastian', gender: 'Male', species: 'Horse', breed: 'Miniature'}
+    {name: 'Parker', gender: 'Male', species: 'Dog', breed: 'Labrador Retriever'}
 ]
 
-animals.each{ |animal| Animal.create(animal) }
+# {name: 'Cooper', gender: 'Male', species: 'Dog', breed: 'Poodle'},
+# {name: 'Flick', gender: 'Male', species: 'Lizard', breed: 'Red Dragon'},
+# {name: 'Sofie', gender: 'Female', species: 'Dog', breed: 'Maltese'},
+# {name: 'Grace Kelly', gender: 'Female', species: 'Bird', breed: 'Cockatiel'},
+# {name: 'Lil Sebastian', gender: 'Male', species: 'Horse', breed: 'Miniature'}
+animals.each do |data|
+    animal = Animal.create(data)
+    animal.image.attach(
+        io: File.open("./public/images/#{animal.name}.jpg"),
+        filename: "#{animal.name}.jpg",
+        content_type: "application/jpg"
+    )
+end
+
 users.each{ |user| User.create(user) }

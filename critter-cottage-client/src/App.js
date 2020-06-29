@@ -16,7 +16,7 @@ function App() {
   return (
     <Router>
       <Fragment>
-        <NavBar />
+        <NavBar currentUser={this.props.currentUser} />
         <Route exact path='/' component={Home}  />
         <Route path='/animals' render={routerProps => <AnimalsContainer  {...routerProps} />} />
         <SessionsContainer />
@@ -27,7 +27,7 @@ function App() {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.userReducer.currentUser
   }
 }
 
