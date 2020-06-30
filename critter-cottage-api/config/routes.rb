@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   get '/', to: 'users#test'
   post '/login', to: 'users#login'
   post '/signup', to: 'users#create'
+  get '/logout', to: 'users#logout'
   resources :animals
 end

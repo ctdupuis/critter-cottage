@@ -3,7 +3,8 @@ import './App.css';
 import Home from './components/Home'
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom';
 import AnimalsContainer from './containers/AnimalsContainer';
 import { connect } from 'react-redux'
