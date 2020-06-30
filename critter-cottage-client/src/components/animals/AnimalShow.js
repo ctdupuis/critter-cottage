@@ -18,6 +18,7 @@ const AnimalShow = ({ animals, match }) => {
         border: 5
     }
     const animal = animals.find(animal => animal.id === parseInt(match.params.animalID))
+    
     const renderCard = animal => {
         return(<div>
             <span>{animal.name} ({genderSym[animal.gender]})</span>
@@ -27,6 +28,7 @@ const AnimalShow = ({ animals, match }) => {
             </div>
         </div>)
     }
+
     return(
         <React.Fragment>
             {animal ? renderCard(animal) : <p>Loading...</p>}

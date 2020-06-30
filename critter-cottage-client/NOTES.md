@@ -13,3 +13,6 @@ may need a sessions container
 
 learn bootstrap
 NEED TO INCLUDE THUNK AT SOME POINT
+
+**Post Request**
+curl -H "Content-Type: application/json" -H "Accept: application/json"  -d '{"email": "boss@admin.com", "password": "boss"}'  http://localhost:3001/login

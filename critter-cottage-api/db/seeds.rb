@@ -13,14 +13,15 @@ users = [
 
 animals = [
     {name: 'Milo', gender: 'Male', species: 'Dog', breed: 'Mutt'},
-    {name: 'Parker', gender: 'Male', species: 'Dog', breed: 'Labrador Retriever'}
+    {name: 'Parker', gender: 'Male', species: 'Dog', breed: 'Labrador Retriever'},
+    {name: "Li'l Sebastian", gender: 'Male', species: 'Horse', breed: 'Miniature'}
 ]
 
 # {name: 'Cooper', gender: 'Male', species: 'Dog', breed: 'Poodle'},
 # {name: 'Flick', gender: 'Male', species: 'Lizard', breed: 'Red Dragon'},
 # {name: 'Sofie', gender: 'Female', species: 'Dog', breed: 'Maltese'},
 # {name: 'Grace Kelly', gender: 'Female', species: 'Bird', breed: 'Cockatiel'},
-# {name: 'Lil Sebastian', gender: 'Male', species: 'Horse', breed: 'Miniature'}
+
 animals.each do |data|
     animal = Animal.create(data)
     animal.image.attach(
