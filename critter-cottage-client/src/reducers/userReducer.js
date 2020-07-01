@@ -9,8 +9,7 @@ export default function userReducer(
             console.log(action)
             return {
                 ...state,
-                currentUser: action.user,
-                requesting: false
+                currentUser: action.user
             }
         case 'LOGOUT_USER':
             return {
@@ -18,15 +17,14 @@ export default function userReducer(
                 currentUser: null
             }
         case 'LOGIN_ERROR':
-            console.log(action.user.error)
+            console.log(action)
             return {
                 ...state,
-                error: action.user.error
+                error: action.err
             }
         case 'START_SESSION_REQUEST':
             return {
-                ...state,
-                requesting: true
+                ...state
             }
         default: return state;
     }

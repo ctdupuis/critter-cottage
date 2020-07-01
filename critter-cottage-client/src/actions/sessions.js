@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const configObject = {
     method: 'POST',
     headers: {
@@ -6,36 +8,42 @@ const configObject = {
     }
 }
 
-
-export function login(userdata) {
-    // let postObj = Object.assign(configObject, { body: JSON.stringify(userdata) })
+export const login = userdata => {
     return (dispatch) => {
         dispatch({ type: 'START_SESSION_REQUEST' })
-        return fetch('http://localhost:3001/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(userdata)
-        })
-            .then(r => r.json())
-            .then(user => {
-                if (user.error) {
-                    dispatch({type: 'LOGIN_ERROR', user})
+            axios.post('http://localhost:3001/login', {
+                email: userdata.email,
+                password: userdata.password
+            }, { withCredentials: true }
+            ).then(res => {
+                if (res.data.logged_in) {
+                    const user = res.data.user
+                    dispatch({ type: 'LOGIN_USER', user })
                 } else {
-                    dispatch({type: 'LOGIN_USER', user})
+                    const err = res.data
+                    dispatch({ type: 'LOGIN_ERROR', err })
                 }
+            }).catch(err => {
+                console.log(err)
             })
     }
 }
 
-export function signup(userdata) {
-    let postObj = Object.assign(configObject, { body: JSON.stringify(userdata) })
+export const signup = userdata => {
     return (dispatch) => {
         dispatch({ type: 'START_SESSION_REQUEST' })
-        fetch('http://localhost:3001/signup', postObj)
-        .then(r => r.json())
-        .then(user => dispatch({ type: 'LOGIN_USER', user}))
+        axios.post('http://localhost:3001/signup', {
+            email: userdata.email,
+            password: userdata.password,
+            f_name: userdata.f_name,
+            l_name: userdata.l_name
+        }, { withCredentials: true }
+        ).then(res => {
+            const user = res.data.user
+            console.log(user)
+        }).catch(err => {
+            console.log(err)
+            dispatch({ type: 'LOGIN_ERROR', err })
+        })
     }
 }

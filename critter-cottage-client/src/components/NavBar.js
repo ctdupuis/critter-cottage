@@ -1,16 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 
-const NavBar = () => {
-    // console.log('hello')
-    return(<div>
-        {/* {props} */}
-        <Link to='/'>Home</Link> || 
-        <Link to='/animals'>See Animals</Link> || 
-        <Link to='/login'>Log In</Link> || 
-        <Link to='/signup'>Sign Up</Link>
-    </div>)
+
+const NavBar = props => {
+    const renderLinks = () => {
+        if (props.currentUser) {
+            return(<div>
+                <Link to='/'>Home</Link> || 
+                <Link to='/animals'>See Animals</Link> ||
+                <h4>Welcome, {props.currentUser.f_name} {props.currentUser.l_name}</h4>
+                <Link to='/logout'>Log Out</Link>
+            </div>)
+        } else {
+            return(<div>
+                <Link to='/'>Home</Link> || 
+                <Link to='/animals'>See Animals</Link> || 
+                <Link to='/login'>Log In</Link> || 
+                <Link to='/signup'>Sign Up</Link>
+            </div>)
+        }
+    }
+
+    return(
+        <div>
+            {renderLinks()}
+        </div>
+    )
 }
 
 export default NavBar;

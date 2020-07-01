@@ -6,22 +6,8 @@ import { login } from '../../actions/sessions'
 class LoginForm extends Component {
     state = {
         email: '',
-        password: '',
-        redirect: false
+        password: ''
     }
-
-    shouldComponentUpdate() {
-        return (this.state.error) ? true : false
-    }
-
-    componentDidUpdate() {
-        this.setRedirect()
-        this.setState({
-            email: '',
-            password: ''
-        })
-    }
-
     
     handleOnChange = event => {
         this.setState({
@@ -36,6 +22,7 @@ class LoginForm extends Component {
             password: this.state.password
         }
         this.props.login(userdata)
+        this.props.history.push('/')
         console.log(this.state)
         // this.setState({
         //     email: '',
@@ -66,12 +53,6 @@ class LoginForm extends Component {
         // })
     }
 
-    setRedirect = () => { 
-        this.setState({
-            redirect: true
-        })
-    }
-
     renderError = () => {
         if (this.state.error) {
             return <div>{this.state.error}</div>
@@ -88,7 +69,6 @@ class LoginForm extends Component {
         return (
             <div>
                 {this.renderError()}
-                {this.renderRedirect()}
                 <form method="POST" onSubmit={this.handleOnSubmit}>
                     <label>Email</label>
                     <input 

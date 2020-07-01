@@ -16,7 +16,8 @@ class UsersController < ApplicationController
         )
         if user 
             session[:user_id] = user.id 
-            render json: { status: "created", user: user }
+
+            render json: { status: "created", user: user.as_json(only: [:id, :email, :f_name, :l_name, :admin]) }
         else
             render json: { status: 422 }
         end
@@ -36,9 +37,9 @@ class UsersController < ApplicationController
         # binding.pry
         if user  
             session[:user_id] = user.id
-            render json: { status: 200, logged_in: true, user: user }
+            render json: { logged_in: true, user: user.as_json(only: [:id, :email, :f_name, :l_name, :admin]) }
         else
-            render json: { status: 401 }
+            render json: { logged_in: false }
         end
         # if !user 
         #     render json: { error: 'Email is invalid or could not be found' }
@@ -63,7 +64,7 @@ class UsersController < ApplicationController
     end
 
     def logout
-        reset_session
+        session.delete[:user_id]
         render json: { status: 200 }
     end
 
