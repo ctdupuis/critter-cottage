@@ -18,8 +18,8 @@ class UsersController < ApplicationController
             session[:user_id] = user.id 
 
             render json: { status: "created", user: user.as_json(only: [:id, :email, :f_name, :l_name, :admin]) }
-        else
-            render json: { status: 422 }
+        elsif user.errors.any?
+            render json: { status: "failed", err: user.errors.full_messages }
         end
         # binding.pry
         # if user.errors.any?

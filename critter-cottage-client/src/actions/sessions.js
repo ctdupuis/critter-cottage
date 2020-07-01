@@ -39,11 +39,15 @@ export const signup = userdata => {
             l_name: userdata.l_name
         }, { withCredentials: true }
         ).then(res => {
-            const user = res.data.user
-            console.log(user)
+            if (res.data.status === "created") {
+                const user = res.data.user
+                dispatch({ type: 'LOGIN_USER', user })
+            } else {
+                const err = res.data
+                dispatch({ type: 'LOGIN_ERROR', err })
+            }
         }).catch(err => {
             console.log(err)
-            dispatch({ type: 'LOGIN_ERROR', err })
         })
     }
 }

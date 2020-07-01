@@ -21,36 +21,9 @@ class LoginForm extends Component {
             email: this.state.email,
             password: this.state.password
         }
+
         this.props.login(userdata)
         this.props.history.push('/')
-        console.log(this.state)
-        // this.setState({
-        //     email: '',
-        //     password: ''
-        // })
-        // this.setRedirect();
-
-        // fetch('http://localhost:3001/login', {
-        //         method: "POST",
-        //         headers: {
-        //           "Content-Type": "application/json",
-        //           "Accept": "application/json"
-        //         },
-        //         body: JSON.stringify(userdata)
-        //     })
-        // .then(r => r.json())
-        // .then(user => {
-        //     if (user.error) {
-        //         this.setState({ error: user.error })
-        //     } else {
-        //         this.props.login(user)
-        //         this.setState({
-        //             email: '',
-        //             password: '',
-        //         })
-        //         this.setRedirect()
-        //     }
-        // })
     }
 
     renderError = () => {

@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { signup } from '../../actions/sessions'
 
 class SignupForm extends Component {
     state = {
         email: '',
         password: '',
         f_name: '',
-        l_name: '',
-        redirect: false
+        l_name: ''
     }
     
     handleOnChange = event => {
@@ -26,40 +25,8 @@ class SignupForm extends Component {
             l_name: this.state.l_name
         }
 
-        fetch('http://localhost:3001/signup', {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  "Accept": "application/json"
-                },
-                body: JSON.stringify(userdata)
-            })
-        .then(r => r.json())
-        .then(user => {
-            if (user.error) {
-                this.setState(prevState => {
-                    return {
-                        ...prevState,
-                        error: user.error
-                    }
-                })
-            } else {
-                this.props.login(user)
-                this.setState({
-                    email: '',
-                    password: '',
-                    f_name: '',
-                    l_name: ''
-                })
-                this.setRedirect()
-            }
-        })
-    }
-
-    setRedirect = () => {
-        this.setState({
-            redirect: true
-        })
+        this.props.signup(userdata)
+        this.props.history.push('/')
     }
 
     renderError = () => {
@@ -67,18 +34,11 @@ class SignupForm extends Component {
             return <div>{this.state.error}</div>
         }
     }
-    
-    renderRedirect = () => {
-        if (this.state.redirect) {
-            return <Redirect to={'/animals'} />
-        }
-    }
 
     render() {
         return (
             <div>
                 {this.renderError()}
-                {this.renderRedirect()}
                 <form method="POST" onSubmit={this.handleOnSubmit}>
                     
                     <label>First Name</label>
@@ -116,16 +76,5 @@ class SignupForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        currentUser: state.email
-    }
-}
 
-const mapDispatchToProps = dispatch => {
-    return {
-        login: user => dispatch({ type: 'LOGIN_USER', user })
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignupForm)
+export default connect(null, { signup })(SignupForm)
