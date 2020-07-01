@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
   post '/signup', to: 'users#create'
   get '/logout', to: 'users#logout'
+  get '/logged_in', to: 'users#logged_in'
   resources :animals
 end

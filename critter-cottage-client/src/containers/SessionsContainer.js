@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import LoginForm from '../components/sessions/LoginForm';
 import SignupForm from '../components/sessions/SignupForm';
 import { Route } from 'react-router-dom';
-// import { login, signup } from '../actions/sessions';
 import { connect } from 'react-redux';
 import NavBar from '../components/NavBar';
 

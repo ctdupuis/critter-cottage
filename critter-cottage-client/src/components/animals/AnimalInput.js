@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
 
 export default class AnimalInput extends Component {
     state = {
@@ -20,12 +19,6 @@ export default class AnimalInput extends Component {
         })
     }
 
-    renderRedirect = () => {
-        if (this.state.redirect) {
-            return <Redirect to={'/animals'} />
-        }
-    }
-
     handleOnSubmit = event => {
         event.preventDefault()
         this.props.addAnimal(this.state)
@@ -41,7 +34,6 @@ export default class AnimalInput extends Component {
     render() {
         return (
             <div>
-                {this.renderRedirect()}
                 <h3>Add an Animal</h3>
                 <form onSubmit={this.handleOnSubmit}>
                     <label>Name</label>

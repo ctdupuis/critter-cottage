@@ -51,3 +51,19 @@ export const signup = userdata => {
         })
     }
 }
+
+export const loginStatus = () => {
+    // debugger
+    return (dispatch) => {
+        dispatch({ type: 'START_SESSION_REQUEST' })
+        axios.get('http://localhost:3001/logged_in', { withCredntials: true })
+        .then(res => {
+            console.log(res)
+            if (res.data.logged_in) {
+                const user = res.data.user
+                // console.log(res, user)
+                dispatch({type: 'LOGIN_USER', user })
+            }
+        }).catch(err => console.log(err))
+    }
+}

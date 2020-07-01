@@ -21,15 +21,6 @@ class UsersController < ApplicationController
         elsif user.errors.any?
             render json: { status: "failed", err: user.errors.full_messages }
         end
-        # binding.pry
-        # if user.errors.any?
-        #     render json: { error: user.errors.full_messages }
-        # elsif user.save
-        #     # render json: user, except: [:id, :password_digest, :created_at, :updated_at]
-        #     render json: { status: 200, user: user }
-        # else
-        #     render json: { error: 'Something went wrong' }
-        # end
     end
 
     def login
@@ -38,24 +29,14 @@ class UsersController < ApplicationController
         if user  
             session[:user_id] = user.id
             render json: { logged_in: true, user: user.as_json(only: [:id, :email, :f_name, :l_name, :admin]) }
+            binding.pry
         else
             render json: { logged_in: false }
         end
-        # if !user 
-        #     render json: { error: 'Email is invalid or could not be found' }
-
-        # elsif !user.authenticate(params[:password])
-        #     render json: { error: 'Invalid password' }
-
-        # elsif user && user.authenticate(params[:password])
-        #     render json: user, except: [:id, :password_digest, :created_at, :updated_at]
-
-        # else
-        #     render json: { error: 'Something went wrong' }
-        # end
     end
 
     def logged_in
+        binding.pry
         if @current_user
             render json: { logged_in: true, user: @current_user }
         else
