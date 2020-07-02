@@ -3,30 +3,36 @@ import './App.css';
 import Home from './components/Home'
 import {
   BrowserRouter as Router,
-  Route,
-  Switch
+  Route
 } from 'react-router-dom';
 import AnimalsContainer from './containers/AnimalsContainer';
 import { connect } from 'react-redux'
 import SessionsContainer from './containers/SessionsContainer';
-import NavBar from './components/NavBar'
-import LoginForm from './components/sessions/LoginForm';
-import SignupForm from './components/sessions/SignupForm'
-import { loginStatus } from './actions/sessions'
+import { getLoginStatus, endSession } from './actions/sessions'
 import axios from 'axios'
 
 
 class App extends Component {
   
+  // shouldComponentUpdate() {
+  //   this.checkState()
+  // }
+
+  // checkState() {
+  //   if (this.props.currentUser.email) { return true } else { return false }
+  // }
+
   componentDidMount() {
     // axios.get('http://localhost:3001/logged_in', { withCredentials: true }).then(res => console.log(res.data))
-    this.getStatus();
+    // this.getStatus();
+    this.props.getLoginStatus();
   }
 
-  componentDidUpdate() {
-    // axios.get('http://localhost:3001/logged_in', { withCredentials: true }).then(res => console.log(res.data))
-    this.getStatus()
-  }
+  // componentDidUpdate() {
+  //   // axios.get('http://localhost:3001/logged_in', { withCredentials: true }).then(res => console.log(res.data))
+  //   // this.getStatus()
+  //   this.props.getLoginStatus();
+  // }
 
   async getStatus() {
     const resp = await axios.get('http://localhost:3001/logged_in', { withCredentials: true })
@@ -39,7 +45,7 @@ class App extends Component {
     <Router>
       <Fragment>
         <SessionsContainer />
-        <Route exact path='/' component={Home}  />
+        <Route exact path='/' component={Home} endSession={endSession} />
         <Route path='/animals' render={routerProps => <AnimalsContainer  {...routerProps} />} />
       </Fragment>
     </Router>
@@ -53,4 +59,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { getLoginStatus, endSession })(App);

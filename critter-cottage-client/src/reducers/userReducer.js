@@ -14,13 +14,13 @@ export default function userReducer(
         case 'LOGOUT_USER':
             return {
                 ...state,
-                currentUser: null
+                currentUser: {}
             }
         case 'LOGIN_ERROR':
             console.log(action)
             return {
                 ...state,
-                error: action.err
+                errors: action.err
             }
         case 'START_SESSION_REQUEST':
             return {

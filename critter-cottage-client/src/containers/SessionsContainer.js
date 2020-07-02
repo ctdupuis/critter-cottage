@@ -4,6 +4,7 @@ import SignupForm from '../components/sessions/SignupForm';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NavBar from '../components/NavBar';
+import Profile from '../components/sessions/Profile';
 
 class SessionsContainer extends Component {
     render() {
@@ -14,6 +15,8 @@ class SessionsContainer extends Component {
                render={props => <LoginForm  {...props} />} />
               <Route exact path='/signup'
                render={props => <SignupForm  {...props} />} />
+               <Route exact path='/profile'
+               render={props => <Profile user={this.props.user} {...props} /> } />
             </React.Fragment>
         )
     }

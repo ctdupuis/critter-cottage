@@ -15,7 +15,7 @@ const NavBar = props => {
             return(<div>
                 <Link to='/'>Home</Link> || 
                 <Link to='/animals'>See Animals</Link> ||
-                <h4>Welcome, {props.currentUser.f_name} {props.currentUser.l_name}</h4>
+                <Link to='/profile'>My Profile</Link> ||
                 <Link to='/logout'>Log Out</Link>
             </div>)
         }
