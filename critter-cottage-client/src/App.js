@@ -9,35 +9,12 @@ import AnimalsContainer from './containers/AnimalsContainer';
 import { connect } from 'react-redux'
 import SessionsContainer from './containers/SessionsContainer';
 import { getLoginStatus, endSession } from './actions/sessions'
-import axios from 'axios'
 
 
 class App extends Component {
-  
-  // shouldComponentUpdate() {
-  //   this.checkState()
-  // }
-
-  // checkState() {
-  //   if (this.props.currentUser.email) { return true } else { return false }
-  // }
 
   componentDidMount() {
-    // axios.get('http://localhost:3001/logged_in', { withCredentials: true }).then(res => console.log(res.data))
-    // this.getStatus();
     this.props.getLoginStatus();
-  }
-
-  // componentDidUpdate() {
-  //   // axios.get('http://localhost:3001/logged_in', { withCredentials: true }).then(res => console.log(res.data))
-  //   // this.getStatus()
-  //   this.props.getLoginStatus();
-  // }
-
-  async getStatus() {
-    const resp = await axios.get('http://localhost:3001/logged_in', { withCredentials: true })
-    const data = resp.data
-    console.log(data)
   }
 
   render() {

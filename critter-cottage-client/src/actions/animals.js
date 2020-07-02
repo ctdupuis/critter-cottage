@@ -1,4 +1,5 @@
 import axios from 'axios';
+// import { DirectUpload } from 'active-storage'
 
 export function fetchAnimals() {
     return (dispatch) => {
@@ -9,4 +10,11 @@ export function fetchAnimals() {
           dispatch({ type: 'STORE_ANIMALS', animals })
         })
     };
+}
+
+export function addAnimal(animaldata) {
+  return async dispatch => {
+    dispatch({type: 'START_ADD_ANIMAL'})
+    
+  }
 }

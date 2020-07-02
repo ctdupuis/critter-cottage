@@ -31,7 +31,7 @@ const AnimalShow = ({ animals, match }) => {
 
     return(
         <React.Fragment>
-            {animal ? renderCard(animal) : <p>Loading...</p>}
+            {animal ? renderCard(animal) : <p>AnimalShow Component</p>}
         </React.Fragment>
     )
 }

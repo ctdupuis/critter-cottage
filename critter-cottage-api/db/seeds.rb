@@ -8,7 +8,10 @@
 
 users = [
     {email: 'boss@admin.com', password: 'boss', admin: true, f_name: 'Top', l_name: 'Dog'},
-    {email: 'user@place.com', password: 'pass', admin: false, f_name: 'New', l_name: 'User'}
+    {email: 'tnook@nookinc.com', password: 'nook', admin: false, f_name: 'Tom', l_name: 'Nook'},
+    {email: 'dutydog@cod.com', password: 'coddog', admin: false, f_name: 'Riley', l_name: 'Ward'},
+    {email: 'gibby@icarly.com', password: 'gibby', admin: false, f_name: 'Noah', l_name: 'Munck'}
+
 ]
 
 animals = [

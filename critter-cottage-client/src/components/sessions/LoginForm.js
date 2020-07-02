@@ -10,7 +10,6 @@ class LoginForm extends Component {
     }
     
     componentDidUpdate() {
-        console.log(this.props)
         if (!JSON.stringify(this.props.user === '{}')) {
             this.props.history.push('/profile')
         }
@@ -29,7 +28,7 @@ class LoginForm extends Component {
             password: this.state.password
         }
 
-        this.props.login(userdata)
+        const resp = this.props.login(userdata)
         // debugger
         // this.props.history.push('/profile')
     }
