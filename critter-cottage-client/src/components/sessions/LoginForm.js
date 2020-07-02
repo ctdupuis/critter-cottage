@@ -9,6 +9,13 @@ class LoginForm extends Component {
         password: ''
     }
     
+    componentDidUpdate() {
+        console.log(this.props)
+        if (!JSON.stringify(this.props.user === '{}')) {
+            this.props.history.push('/profile')
+        }
+    }
+
     handleOnChange = event => {
         this.setState({
             [event.target.name]: event.target.value
@@ -23,7 +30,8 @@ class LoginForm extends Component {
         }
 
         this.props.login(userdata)
-        this.props.history.push('/')
+        // debugger
+        // this.props.history.push('/profile')
     }
 
     renderError = () => {

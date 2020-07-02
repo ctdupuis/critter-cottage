@@ -55,11 +55,18 @@ export const getLoginStatus = () => {
 }
 
 export const endSession = () => {
-    return async (dispatch) => {
-        const response = await axios.get('http://localhost:3001/logout', { withCredentials: true })
-        const data = response.data
-        if (data) { 
-            dispatch({ type: 'LOGOUT_USER' })
-        }
+    return (dispatch) => {
+        axios.get('http://localhost:3001/logout', { withCredentials: true})
+        .then(res => dispatch({ type: 'LOGOUT_USER' }))
     }
+
+
+
+    // return async (dispatch) => {
+    //     const response = await axios.get('http://localhost:3001/logout', { withCredentials: true })
+    //     const data = response.data
+    //     if (data) { 
+    //         dispatch({ type: 'LOGOUT_USER' })
+    //     }
+    // }
 }

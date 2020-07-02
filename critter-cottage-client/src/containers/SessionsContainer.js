@@ -13,7 +13,7 @@ class SessionsContainer extends Component {
             <React.Fragment>
             <NavBar endSession={endSession} currentUser={this.props.user} />
               <Route exact path='/login'
-               render={props => <LoginForm  {...props} />} />
+               render={props => <LoginForm user={this.props.user} {...props} />} />
               <Route exact path='/signup'
                render={props => <SignupForm  {...props} />} />
                <Route exact path='/profile'
