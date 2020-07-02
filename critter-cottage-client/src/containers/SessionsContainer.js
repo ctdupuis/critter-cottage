@@ -5,12 +5,13 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NavBar from '../components/NavBar';
 import Profile from '../components/sessions/Profile';
+import { endSession } from '../actions/sessions';
 
 class SessionsContainer extends Component {
     render() {
         return (
             <React.Fragment>
-            <NavBar currentUser={this.props.user} />
+            <NavBar endSession={endSession} currentUser={this.props.user} />
               <Route exact path='/login'
                render={props => <LoginForm  {...props} />} />
               <Route exact path='/signup'
@@ -22,4 +23,4 @@ class SessionsContainer extends Component {
     }
 }
 
-export default connect(state => ({ user: state.userReducer.currentUser }))(SessionsContainer);
+export default connect(state => ({ user: state.userReducer.currentUser }), { endSession })(SessionsContainer);

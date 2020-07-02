@@ -55,8 +55,11 @@ export const getLoginStatus = () => {
 }
 
 export const endSession = () => {
-    return (dispatch) => {
-        axios.get('http://localhost:3001/logout', { withCredentials: true })
-        .then(r => dispatch({ type: 'LOGOUT_USER' }) )
+    return async (dispatch) => {
+        const response = await axios.get('http://localhost:3001/logout', { withCredentials: true })
+        const data = response.data
+        if (data) { 
+            dispatch({ type: 'LOGOUT_USER' })
+        }
     }
 }
