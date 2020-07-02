@@ -1,5 +1,4 @@
 class UsersController < ApplicationController 
-    include CurrentUserConcern
 
     def test
         # render json: { status: 'success!' }
@@ -24,29 +23,31 @@ class UsersController < ApplicationController
     end
 
     def login
+        session.clear
         user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
         # binding.pry
         if user  
             session[:user_id] = user.id
             render json: { logged_in: true, user: user.as_json(only: [:id, :email, :f_name, :l_name, :admin]) }
-            binding.pry
+            # binding.pry
         else
             render json: { logged_in: false }
         end
     end
 
     def logged_in
-        binding.pry
+        # binding.pry
         if @current_user
-            render json: { logged_in: true, user: @current_user }
+            render json: { logged_in: true, user: @current_user, session: session }
         else
             render json: { logged_in: false }
         end
     end
 
     def logout
-        session.delete[:user_id]
-        render json: { status: 200 }
+        session.clear
+        # binding.pry
+        render json: { status: "loggedout", session: session }
     end
 
 end

@@ -13,12 +13,25 @@ import NavBar from './components/NavBar'
 import LoginForm from './components/sessions/LoginForm';
 import SignupForm from './components/sessions/SignupForm'
 import { loginStatus } from './actions/sessions'
+import axios from 'axios'
 
 
 class App extends Component {
   
   componentDidMount() {
-    loginStatus();
+    // axios.get('http://localhost:3001/logged_in', { withCredentials: true }).then(res => console.log(res.data))
+    this.getStatus();
+  }
+
+  componentDidUpdate() {
+    // axios.get('http://localhost:3001/logged_in', { withCredentials: true }).then(res => console.log(res.data))
+    this.getStatus()
+  }
+
+  async getStatus() {
+    const resp = await axios.get('http://localhost:3001/logged_in', { withCredentials: true })
+    const data = resp.data
+    console.log(data)
   }
 
   render() {
