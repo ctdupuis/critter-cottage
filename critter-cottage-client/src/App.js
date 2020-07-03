@@ -22,11 +22,7 @@ import Profile from './components/sessions/Profile'
 
 class App extends Component {
 
-  componentDidMount() {
-    this.props.getLoginStatus();
-    console.log(JSON.stringify(this.props.currentUser))
-  }
-
+ 
   render() {
     return(
     
@@ -65,4 +61,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getLoginStatus })(App);
+export default connect(mapStateToProps)(App);

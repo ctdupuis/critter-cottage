@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get '/logout', to: 'users#logout'
   get '/logged_in', to: 'users#logged_in'
   resources :animals
+  post 'rails/active_storage/direct_uploads', to: 'direct_uploads#create'
 end

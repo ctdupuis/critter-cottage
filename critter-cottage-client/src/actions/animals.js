@@ -25,9 +25,17 @@ export function addAnimal(animaldata) {
     )
     const animal = response.data
     dispatch({ type: 'ADD_ANIMAL', animal })
+    uploadFile(animal.avatar, animal)
   }
 }
 
 const uploadFile = (file, animal) => {
-
+  const upload = new DirectUpload(file, 'http://localhost:3001/rails/active_storage/direct_uploads')
+  upload.create((error, blob) => {
+    if (error) {
+      console.log(error)
+    } else {
+      console.log('No errors here..')
+    }
+  })
 }

@@ -6,8 +6,13 @@ import { connect } from 'react-redux';
 import NavBar from '../components/NavBar';
 import Profile from '../components/sessions/Profile';
 import { endSession } from '../actions/sessions';
+import { getLoginStatus } from '../actions/sessions'
 
 class SessionsContainer extends Component {
+    componentDidMount() {
+        this.props.getLoginStatus()
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -23,4 +28,4 @@ class SessionsContainer extends Component {
     }
 }
 
-export default connect(state => ({ user: state.userReducer.currentUser }), { endSession })(SessionsContainer);
+export default connect(state => ({ user: state.userReducer.currentUser }), { getLoginStatus })(SessionsContainer);
