@@ -26,12 +26,18 @@ class SignupForm extends Component {
         }
 
         this.props.signup(userdata)
-        this.props.history.push('/')
+        this.setState({
+            email: '',
+            password: '',
+            f_name: '',
+            l_name: ''
+        })
+        this.props.history.replace('/profile')
     }
 
     renderError = () => {
-        if (this.state.error) {
-            return <div>{this.state.error}</div>
+        if (this.props.errors) {
+            return this.props.errors.map(err => <div>{err}</div>)
         }
     }
 

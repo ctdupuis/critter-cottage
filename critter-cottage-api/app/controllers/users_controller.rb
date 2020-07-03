@@ -25,7 +25,6 @@ class UsersController < ApplicationController
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
-            # binding.pry
             render json: { logged_in: true, user: user.as_json(only: [:id, :email, :f_name, :l_name, :admin]) }
         elsif !user
             render json: { logged_in: false, error: "That email could not be found"}

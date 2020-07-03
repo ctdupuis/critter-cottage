@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux'
+import { endSession } from '../actions/sessions'
+import { connect } from 'react-redux'
 
 
 const NavBar = props => {
 
-    const dispatch = useDispatch()
-
     const renderLinks = () => {
-        if (JSON.stringify(props.currentUser) === '{}') {
+        if (!props.currentUser.email) {
             return(<div>
                 <Link to='/'>Home</Link> || 
                 <Link to='/animals'>See Animals</Link> || 
@@ -20,8 +19,7 @@ const NavBar = props => {
                 <Link to='/'>Home</Link> || 
                 <Link to={'/animals'}>See Animals</Link> ||
                 <Link to={'/profile'}>My Profile</Link> ||
-                <Link to='/' onClick={props.endSession()}>Log Out</Link>
-                {/* <button onClick={props.endSession}>Log Out</button> */}
+                <Link to='/' onClick={props.endSession}>Log Out</Link>
             </div>)
         }
     }
@@ -35,4 +33,4 @@ const NavBar = props => {
     )
 }
 
-export default NavBar;
+export default connect(null, { endSession })(NavBar)

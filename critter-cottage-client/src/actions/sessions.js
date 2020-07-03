@@ -42,6 +42,11 @@ export const signup = userdata => {
     }
 }
 
+const signIn = (user) => {
+    return({ type: 'LOGIN_USER', user })
+}
+
+
 export const getLoginStatus = () => {
     return async (dispatch) => {
         dispatch({ type: 'START_SESSION_REQUEST' })
@@ -56,18 +61,9 @@ export const getLoginStatus = () => {
 }
 
 export const endSession = () => {
-    return (dispatch) => {
+    return (dispatch) =>  {
         axios.get('http://localhost:3001/logout', { withCredentials: true})
         .then(res => dispatch({ type: 'LOGOUT_USER' }))
+        dispatch({ type: "LOGOUT_USER" })
     }
-
-
-
-    // return async (dispatch) => {
-    //     const response = await axios.get('http://localhost:3001/logout', { withCredentials: true })
-    //     const data = response.data
-    //     if (data) { 
-    //         dispatch({ type: 'LOGOUT_USER' })
-    //     }
-    // }
 }

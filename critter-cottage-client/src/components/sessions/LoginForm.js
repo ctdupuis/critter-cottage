@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import { login } from '../../actions/sessions'
 
 class LoginForm extends Component {
@@ -27,26 +26,24 @@ class LoginForm extends Component {
             email: '',
             password: ''
         })
-        // debugger
-        this.props.history.push('/profile')
+        setTimeout(() => this.props.history.replace('/profile'), 400)
     }
 
-    renderError = () => {
+    renderError = clear => {
         if (this.props.errors) {
-            return <div>{this.props.errors}</div>
+            return <div className='error'>{this.props.errors}</div>
         }
     }
-    
-    renderRedirect = () => {
-        if (this.state.redirect) {
-            return <Redirect to={'/'} />
-        }
+
+    clearError = () => {
+        document.querySelector('.error').remove()
+       
     }
 
     render() {
         return (
             <div>
-                {this.renderError()}
+                {this.renderError(this.clearError)}
                 <form method="POST" onSubmit={this.handleOnSubmit}>
                     <label>Email</label>
                     <input 
