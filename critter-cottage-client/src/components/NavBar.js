@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 const NavBar = props => {
 
     const renderLinks = () => {
-        if (!props.currentUser.email) {
+        if (!props.currentUser) {
             return(<div>
                 <Link to='/'>Home</Link> || 
                 <Link to='/animals'>See Animals</Link> || 

@@ -1,6 +1,6 @@
 export default function userReducer(
     state = {
-        currentUser: {}
+        currentUser: undefined
     },
     action
 ) {

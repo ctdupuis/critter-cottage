@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import LoginForm from '../components/sessions/LoginForm';
 import SignupForm from '../components/sessions/SignupForm';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NavBar from '../components/NavBar';
 import Profile from '../components/sessions/Profile';
@@ -16,16 +16,18 @@ class SessionsContainer extends Component {
     render() {
         return (
             <React.Fragment>
-            {/* <NavBar endSession={endSession} currentUser={this.props.user} />
-              <Route exact path='/login'
-               render={props => <LoginForm user={this.props.user} {...props} />} />
-              <Route exact path='/signup'
-               render={props => <SignupForm  {...props} />} />
-              <Route exact path='/profile'
-               render={props => <Profile user={this.props.user} {...props} /> } /> */}
+                <NavBar currentUser={this.props.currentUser} />
+                <Route exact path='/login'
+                    render={props => <LoginForm login={this.props.login} errors={this.props.errors} currentUser={this.props.currentUser} {...props} />} />
+                <Route exact path='/signup'
+                    render={props => (!this.props.currentUser) ? <SignupForm user={this.props.currentUser} {...props} />  : <SignupForm errors={this.props.errors} /> }
+                />
+                <Route exact path='/profile'
+                    render={props => (this.props.currentUser.email) ? <Profile user={this.props.currentUser} {...props} /> : <Redirect to={'/login'} errors={this.props.errors} /> }
+                />
             </React.Fragment>
         )
     }
 }
 
-export default connect(state => ({ user: state.userReducer.currentUser }), { getLoginStatus })(SessionsContainer);
+export default connect(state => ({ currentUser: state.userReducer.currentUser }), { getLoginStatus })(SessionsContainer);

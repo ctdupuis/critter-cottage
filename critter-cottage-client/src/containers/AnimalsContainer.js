@@ -13,26 +13,20 @@ class AnimalsContainer extends Component {
         if (this.props.animals.length < 1) {
             this.props.fetchAnimals()
         }
-        if (this.props.currentUser.admin) {
-            console.log('admin')
-        }
     }
 
     render() {
         return (
-            // <AnimalInput />
             <React.Fragment>
-            <Switch>
-            //     {/* <Route exact path={'/animals'} render={routerProps => <AnimalsPage {...routerProps} animals={this.props.animals} />} /> */}
+                <Switch>
 
-            //     {/* <Route exact path={'/animals/new'} render={routerProps => <AnimalInput {...routerProps} addAnimal={this.props.addAnimal}/> } />  */}
+                    <Route exact path={'/animals'} 
+                        render={routerProps => <AnimalsPage animals={this.props.animals} currentUser={this.props.currentUser} {...routerProps} />} />
+                    <Route exact path={'/animals/new'} component={AnimalInput} /> 
+                    <Route exact path={'/animals/:animalID'} 
+                        render={routerProps => <AnimalShow {...routerProps} animals={this.props.animals} />} />
 
-
-            //     {/* <Route exact path={'/animals/:animalID'} render={routerProps => <AnimalShow {...routerProps} animals={this.props.animals} />} /> */}
-
-            //     {/* <Redirect to={'/animals'} /> */}
- 
-            </Switch>
+                </Switch>
             </React.Fragment>
         )
     }

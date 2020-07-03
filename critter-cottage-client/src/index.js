@@ -22,7 +22,6 @@ ReactDOM.render(
     <BrowserRouter>
       <App store={store} />
     </BrowserRouter>
-
   </Provider>,
   document.getElementById('root')
 );

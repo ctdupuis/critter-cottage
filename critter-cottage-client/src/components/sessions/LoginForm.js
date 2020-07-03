@@ -68,3 +68,4 @@ class LoginForm extends Component {
 
 
 export default connect(null, { login })(LoginForm)
+// export default LoginForm;
