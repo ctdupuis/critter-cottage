@@ -1,6 +1,7 @@
 import React from 'react';
 
 const AnimalShow = ({ animals, match }) => {
+    console.log('AnimalShow rendered')
     const genderSym = {
         'Male': '♂',
         'Female': '♀'
@@ -23,6 +24,8 @@ const AnimalShow = ({ animals, match }) => {
         return(<div>
             <span>{animal.name} ({genderSym[animal.gender]})</span>
             <span>{animal.species}: {animal.breed}</span>
+            <br />
+            <span>About {animal.name}: {animal.bio}</span>
             <div className='img-container' style={container}>
                 <img src={`http://localhost:3001/${animal.image_url}`} alt={animal.name} style={imgStyle} />
             </div>

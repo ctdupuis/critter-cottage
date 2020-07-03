@@ -5,7 +5,6 @@ export default class AnimalInput extends Component {
         name: '',
         species: '',
         gender: '',
-        species: '',
         breed: '',
         image: {}
     }

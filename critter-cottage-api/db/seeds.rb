@@ -15,9 +15,9 @@ users = [
 ]
 
 animals = [
-    {name: 'Milo', gender: 'Male', species: 'Dog', breed: 'Mutt'},
-    {name: 'Parker', gender: 'Male', species: 'Dog', breed: 'Labrador Retriever'},
-    {name: "Li'l Sebastian", gender: 'Male', species: 'Horse', breed: 'Miniature'}
+    {name: 'Milo', gender: 'Male', species: 'Dog', breed: 'Mutt', bio: "Milo's bio goes here"},
+    {name: 'Parker', gender: 'Male', species: 'Dog', breed: 'Labrador Retriever', bio: "Parker's bio goes here"},
+    {name: "Li'l Sebastian", gender: 'Male', species: 'Horse', breed: 'Miniature', bio: "Li'l Sebastian's bio goes here"}
 ]
 
 # {name: 'Cooper', gender: 'Male', species: 'Dog', breed: 'Poodle'},

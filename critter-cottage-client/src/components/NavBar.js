@@ -18,8 +18,8 @@ const NavBar = props => {
         } else {
             return(<div>
                 <Link to='/'>Home</Link> || 
-                <Link to='/animals'>See Animals</Link> ||
-                <Link to='/profile'>My Profile</Link> ||
+                <Link to={'/animals'}>See Animals</Link> ||
+                <Link to={'/profile'}>My Profile</Link> ||
                 <Link to='/' onClick={props.endSession()}>Log Out</Link>
                 {/* <button onClick={props.endSession}>Log Out</button> */}
             </div>)

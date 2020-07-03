@@ -9,14 +9,12 @@ export default function animalReducer(
         case 'START_STORE_REQUEST':
             return {
                 ...state,
-                animals: [...state.animals],
-                requesting: true
+                animals: [...state.animals]
             }
         case 'ADD_ANIMAL':
             return {
                 ...state,
-                animals: [...state.animals, action.animal],
-                requesting: false
+                animals: [...state.animals, action.animal]
             }
         case 'STORE_ANIMALS':
             return {

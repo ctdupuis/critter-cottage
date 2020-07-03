@@ -11,13 +11,13 @@ class SessionsContainer extends Component {
     render() {
         return (
             <React.Fragment>
-            <NavBar endSession={endSession} currentUser={this.props.user} />
+            {/* <NavBar endSession={endSession} currentUser={this.props.user} />
               <Route exact path='/login'
                render={props => <LoginForm user={this.props.user} {...props} />} />
               <Route exact path='/signup'
                render={props => <SignupForm  {...props} />} />
-               <Route exact path='/profile'
-               render={props => <Profile user={this.props.user} {...props} /> } />
+              <Route exact path='/profile'
+               render={props => <Profile user={this.props.user} {...props} /> } /> */}
             </React.Fragment>
         )
     }

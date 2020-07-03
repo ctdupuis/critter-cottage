@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { DirectUpload } from 'active-storage'
+import { DirectUpload } from 'activestorage'
 
 export function fetchAnimals() {
     return (dispatch) => {
@@ -15,6 +15,19 @@ export function fetchAnimals() {
 export function addAnimal(animaldata) {
   return async dispatch => {
     dispatch({type: 'START_ADD_ANIMAL'})
-    
+    const response = await axios.post('http://localhost:3001/animals', {
+      name: animaldata.name,
+      gender: animaldata.gender,
+      species: animaldata.species,
+      breed: animaldata.breed,
+      bio: animaldata
+    }, { withCredentials: true }
+    )
+    const animal = response.data
+    dispatch({ type: 'ADD_ANIMAL', animal })
   }
+}
+
+const uploadFile = (file, animal) => {
+
 }
