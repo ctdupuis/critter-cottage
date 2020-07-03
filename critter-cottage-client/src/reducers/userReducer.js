@@ -14,7 +14,7 @@ export default function userReducer(
         case 'LOGOUT_USER':
             return {
                 ...state,
-                currentUser: {}
+                currentUser: undefined
             }
         case 'LOGIN_ERROR':
             console.log(action)

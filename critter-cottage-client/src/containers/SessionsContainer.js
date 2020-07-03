@@ -23,7 +23,7 @@ class SessionsContainer extends Component {
                     render={props => (!this.props.currentUser) ? <SignupForm user={this.props.currentUser} {...props} />  : <SignupForm errors={this.props.errors} /> }
                 />
                 <Route exact path='/profile'
-                    render={props => (this.props.currentUser.email) ? <Profile user={this.props.currentUser} {...props} /> : <Redirect to={'/login'} errors={this.props.errors} /> }
+                    render={props => (this.props.currentUser) ? <Profile user={this.props.currentUser} {...props} /> : <Redirect to={'/login'} errors={this.props.errors} /> }
                 />
             </React.Fragment>
         )

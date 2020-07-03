@@ -64,6 +64,6 @@ export const endSession = () => {
     return (dispatch) =>  {
         axios.get('http://localhost:3001/logout', { withCredentials: true})
         .then(res => dispatch({ type: 'LOGOUT_USER' }))
-        dispatch({ type: "LOGOUT_USER" })
+        // dispatch({ type: "LOGOUT_USER" })
     }
 }
