@@ -3,7 +3,9 @@ import './App.css';
 import Home from './components/Home'
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch,
+  Redirect
 } from 'react-router-dom';
 import AnimalsContainer from './containers/AnimalsContainer';
 import AnimalInput from './components/animals/AnimalInput';
@@ -28,7 +30,9 @@ class App extends Component {
     return(
     
       <Fragment>
+
         <NavBar endSession={endSession} currentUser={this.props.currentUser} />
+
         <SessionsContainer />
         <AnimalsContainer />
         <Route exact path={'/'} component={Home} endSession={endSession} />
@@ -38,11 +42,14 @@ class App extends Component {
         <Route exact path={'/animals/:animalID'} 
           render={routerProps => <AnimalShow {...routerProps} animals={this.props.animals} />} />
         <Route exact path='/login'
-          render={props => <LoginForm user={this.props.user} {...props} />} />
+          render={props => <LoginForm errors={this.props.errors} currentUser={this.props.currentUser} {...props} />} />
         <Route exact path='/signup'
           render={props => <SignupForm  {...props} />} />
+
         <Route exact path='/profile'
-          render={props => <Profile user={this.props.currentUser} {...props} /> } />
+          render={props => (!JSON.stringify(this.props.currentUser) === '{}') ? <Profile user={this.props.currentUser} {...props} /> : <Redirect to={'/login'} errors={this.props.errors} /> }
+        />
+
       </Fragment>
     
     )
@@ -52,7 +59,8 @@ class App extends Component {
 const mapStateToProps = state => {
     return {
       currentUser: state.userReducer.currentUser,
-      animals: state.animalReducer.animals
+      animals: state.animalReducer.animals,
+      errors: state.userReducer.errors
     }
 }
 

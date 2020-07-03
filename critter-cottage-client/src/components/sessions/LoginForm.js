@@ -8,12 +8,6 @@ class LoginForm extends Component {
         email: '',
         password: ''
     }
-    
-    componentDidUpdate() {
-        if (!JSON.stringify(this.props.user === '{}')) {
-            this.props.history.push('/profile')
-        }
-    }
 
     handleOnChange = event => {
         this.setState({
@@ -28,14 +22,18 @@ class LoginForm extends Component {
             password: this.state.password
         }
 
-        const resp = this.props.login(userdata)
+        this.props.login(userdata)
+        this.setState({
+            email: '',
+            password: ''
+        })
         // debugger
-        // this.props.history.push('/profile')
+        this.props.history.push('/profile')
     }
 
     renderError = () => {
-        if (this.state.error) {
-            return <div>{this.state.error}</div>
+        if (this.props.errors) {
+            return <div>{this.props.errors}</div>
         }
     }
     
