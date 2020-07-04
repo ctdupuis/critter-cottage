@@ -43,9 +43,7 @@ export default class AnimalEdit extends Component {
         this.props.history.push('/animals')
     }
 
-    setImageUrl(url) {
-        this.setState({ image: url })
-    }
+
 
     render() {
         const animal = this.props.animals.find(an => {

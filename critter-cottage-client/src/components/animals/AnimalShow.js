@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const AnimalShow = ({ animals, match }) => {
+const AnimalShow = ({ animals, match, removeAnimal, history }) => {
     console.log('AnimalShow rendered')
     const genderSym = {
         'Male': '♂',
@@ -19,6 +19,7 @@ const AnimalShow = ({ animals, match }) => {
         width: "100%",
         border: 5
     }
+   
     const animal = animals.find(animal => animal.id === parseInt(match.params.animalID))
     
     const renderCard = animal => {
@@ -31,6 +32,11 @@ const AnimalShow = ({ animals, match }) => {
                 <img src={`http://localhost:3001/${animal.image_url}`} alt={animal.name} style={imgStyle} />
             </div>
             <Link to={`${animal.id}/edit`} animal={animal}>Link to Edit Page</Link>
+            <button 
+            onClick={() => {
+                removeAnimal(animal.id)
+                history.push('/animals')
+                }}>X</button>
         </div>)
     }
 

@@ -31,8 +31,7 @@ export function addAnimal(animaldata) {
 
 export function updateAnimal(animaldata, animalID) {
   return async (dispatch) => {
-    // dispatch({ type: 'START_ADD_ANIMAL'})
-    console.log(`http://localhost:3001/animals/${animalID}`)
+    dispatch({ type: 'START_ADD_ANIMAL'})
     const response = await axios.put(`http://localhost:3001/animals/${animalID}`, {
       id: animalID,
       name: animaldata.name,
@@ -42,9 +41,19 @@ export function updateAnimal(animaldata, animalID) {
       bio: animaldata.bio
     }, { withCredentials: true })
     const animal = response.data
-    debugger
     dispatch({ type: 'UPDATE_ANIMAL', animal })
   }
 }
 
+export function removeAnimal(animalID) {
+  return async (dispatch) => {
+    console.log('hit delete action in reducer', animalID)
+    dispatch({ type: 'START_DESTROY' })
+    const response = await axios.delete(`http://localhost:3001/animals/${animalID}`, {
+      withCredentials: true
+    })
+    const animal = response.data
+    dispatch({ type: 'REMOVE_ANIMAL', animal })
+  }
+}
 //DELETE /animals/:id

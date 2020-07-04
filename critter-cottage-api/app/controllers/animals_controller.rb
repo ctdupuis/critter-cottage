@@ -23,7 +23,6 @@ class AnimalsController < ApplicationController
 
     def update
         animal = Animal.find(params[:id])
-        # binding.pry
         animal.update(
             name: params[:name],
             gender: params[:gender],
@@ -32,6 +31,12 @@ class AnimalsController < ApplicationController
             bio: params[:bio]
         )
         render json: animal, methods: :image_url, except: [:created_at, :updated_at]
+    end
+
+    def destroy
+        animal_id = params[:id].to_i
+        Animal.find(animal_id).destroy
+        render json: { id: animal_id }
     end
     
 end

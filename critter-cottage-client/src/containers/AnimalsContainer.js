@@ -5,7 +5,7 @@ import AnimalsPage from '../components/animals/AnimalsPage';
 import AnimalShow from '../components/animals/AnimalShow';
 import AnimalEdit from '../components/animals/AnimalEdit';
 import { Route, Switch } from 'react-router-dom';
-import { fetchAnimals, addAnimal, updateAnimal } from '../actions/animals';
+import { fetchAnimals, addAnimal, updateAnimal, removeAnimal } from '../actions/animals';
 
 
 class AnimalsContainer extends Component {
@@ -30,7 +30,8 @@ class AnimalsContainer extends Component {
                     <Route exact path={'/animals/:animalID'} 
                         render={routerProps => 
                         <AnimalShow {...routerProps} 
-                            animals={this.props.animals} />} 
+                            animals={this.props.animals}
+                            removeAnimal={this.props.removeAnimal} />} 
                     />
 
                     <Route exact path={'/animals/:animalID/edit'}
@@ -42,15 +43,27 @@ class AnimalsContainer extends Component {
 
                     <Route exact path={'/animals'} 
                         render={routerProps => 
-                        <AnimalsPage 
-                        animals={this.props.animals} 
-                        currentUser={this.props.currentUser} {...routerProps} />} 
+                        <AnimalsPage {...routerProps} 
+                            animals={this.props.animals} 
+                            currentUser={this.props.currentUser} 
+                            removeAnimal={this.props.removeAnimal} />} 
                     />
-                    
+
                 </Switch>
             </React.Fragment>
         )
     }
 }
 
-export default connect(state => ({animals: state.animalReducer.animals, currentUser: state.userReducer.currentUser}), { fetchAnimals, addAnimal, updateAnimal })(AnimalsContainer);
+export default connect(
+    state => ({
+        animals: state.animalReducer.animals,
+        currentUser: state.userReducer.currentUser
+    }),
+    { 
+        fetchAnimals, 
+        addAnimal, 
+        updateAnimal, 
+        removeAnimal 
+    }
+)(AnimalsContainer);

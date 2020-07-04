@@ -3,7 +3,7 @@ import AnimalCard from './AnimalCard'
 import { Link } from 'react-router-dom'
 
 
-const AnimalsPage = ({ animals }) => {
+const AnimalsPage = ({ animals, removeAnimal }) => {
     console.log('AnimalsPage rendered')
     const renderAnimals = animals.map(animal => {
         return (<AnimalCard key={animal.id} animal={animal} />)

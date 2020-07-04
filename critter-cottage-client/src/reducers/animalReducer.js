@@ -5,6 +5,7 @@ export default function animalReducer(
     },
      action
 ) {
+    let keepers;
     switch (action.type) {
         case 'START_STORE_REQUEST':
             return {
@@ -21,9 +22,14 @@ export default function animalReducer(
                 animals: action.animals
             }
         case 'UPDATE_ANIMAL':
-            const keepThese = state.animals.filter(an => an.id !== action.animal.id)
+            keepers = state.animals.filter(an => an.id !== action.animal.id)
             return {
-                animals: [...keepThese, action.animal]
+                animals: [...keepers, action.animal]
+            }
+        case 'REMOVE_ANIMAL':
+            keepers = state.animals.filter(an => an.id !== action.animal.id)
+            return {
+                animals: [...keepers]
             }
         default: return state;
     }
