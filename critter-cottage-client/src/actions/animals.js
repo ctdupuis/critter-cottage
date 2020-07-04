@@ -24,10 +24,8 @@ export function addAnimal(animaldata) {
       image: animaldata.image
     }, { withCredentials: true }
     )
-    debugger
     const animal = response.data
     dispatch({ type: 'ADD_ANIMAL', animal })
-    debugger
   }
 }
 
@@ -35,7 +33,18 @@ export function updateAnimal(animaldata, animalID) {
   return async (dispatch) => {
     // dispatch({ type: 'START_ADD_ANIMAL'})
     console.log(`http://localhost:3001/animals/${animalID}`)
-    // const response = await axios.put(`http://localhost:3001${url}`)
+    const response = await axios.put(`http://localhost:3001/animals/${animalID}`, {
+      id: animalID,
+      name: animaldata.name,
+      gender: animaldata.gender,
+      species: animaldata.species,
+      breed: animaldata.breed,
+      bio: animaldata.bio
+    }, { withCredentials: true })
+    const animal = response.data
+    debugger
+    dispatch({ type: 'UPDATE_ANIMAL', animal })
   }
 }
 
+//DELETE /animals/:id

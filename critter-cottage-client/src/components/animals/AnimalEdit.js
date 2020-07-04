@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { DirectUpload } from 'activestorage';
 
 export default class AnimalEdit extends Component {
+    
     state = {
+        
         name: '',
         species: '',
         gender: '',
@@ -56,24 +58,53 @@ export default class AnimalEdit extends Component {
                 <h3>Edit an Animal</h3>
                 <form onSubmit={this.handleOnSubmit}>
                     <label>Name</label>
-                    <input type='text' name='name' value={name} onChange={this.handleOnChange} />
+                    <input type='text' 
+                        name='name' 
+                        value={this.state.name} 
+                        placeholder={name} 
+                        onChange={this.handleOnChange} />
                     <br />
 
                     <label>Select a Gender:</label>
-                    <input type='radio' name='gender' value='Male' onChange={this.handleOnChange} checked={gender === 'Male'}/> Male
-                    <input type='radio' name='gender' value='Female' onChange={this.handleOnChange} checked={gender === 'Female'}/> Female
+                    <input 
+                        type='radio' 
+                        name='gender' 
+                        value='Male' 
+                        onChange={this.handleOnChange} 
+                        checked={this.state.gender === 'Male'}/> Male
+
+                    <input 
+                        type='radio' 
+                        name='gender' 
+                        value='Female' 
+                        onChange={this.handleOnChange} 
+                        checked={this.state.gender === 'Female'}/> Female
+
                     <br />
 
                     <label>Species</label>
-                    <input type='text' name='species' value={species} onChange={this.handleOnChange} />
+                    <input type='text' 
+                        name='species' 
+                        value={this.state.species}
+                        placeholder={species} 
+                        onChange={this.handleOnChange} />
                     <br />
 
                     <label>Breed</label>
-                    <input type='text' name='breed' value={breed} onChange={this.handleOnChange} />
+                    <input 
+                        type='text' 
+                        name='breed' 
+                        value={this.state.breed} 
+                        placeholder={breed}
+                        onChange={this.handleOnChange} />
                     <br />
 
                     <label>Bio</label>
-                    <textarea name='bio' value={bio} onChange={this.handleOnChange} />
+                    <textarea 
+                        name='bio' 
+                        value={this.state.bio} 
+                        placeholder={bio}
+                        onChange={this.handleOnChange} />
                     <br />
 
                     {/* <label>Add a Picture!</label>

@@ -22,13 +22,31 @@ class AnimalsContainer extends Component {
                 <Switch>
 
                     <Route exact path={'/animals/new'} 
-                        render={routerProps => <AnimalInput {...routerProps} addAnimal={this.props.addAnimal}  />} /> 
+                        render={routerProps => 
+                        <AnimalInput {...routerProps} 
+                            addAnimal={this.props.addAnimal}  />} 
+                    /> 
+
                     <Route exact path={'/animals/:animalID'} 
-                        render={routerProps => <AnimalShow {...routerProps} animals={this.props.animals} />} />
+                        render={routerProps => 
+                        <AnimalShow {...routerProps} 
+                            animals={this.props.animals} />} 
+                    />
+
                     <Route exact path={'/animals/:animalID/edit'}
-                        render={routerProps => <AnimalEdit {...routerProps} animals={this.props.animals} updateAnimal={this.props.updateAnimal} />} />
+                        render={routerProps => 
+                        <AnimalEdit {...routerProps} 
+                            animals={this.props.animals} 
+                            updateAnimal={this.props.updateAnimal} />} 
+                    />
+
                     <Route exact path={'/animals'} 
-                        render={routerProps => <AnimalsPage animals={this.props.animals} currentUser={this.props.currentUser} {...routerProps} />} />
+                        render={routerProps => 
+                        <AnimalsPage 
+                        animals={this.props.animals} 
+                        currentUser={this.props.currentUser} {...routerProps} />} 
+                    />
+                    
                 </Switch>
             </React.Fragment>
         )

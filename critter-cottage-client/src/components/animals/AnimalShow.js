@@ -30,7 +30,7 @@ const AnimalShow = ({ animals, match }) => {
             <div className='img-container' style={container}>
                 <img src={`http://localhost:3001/${animal.image_url}`} alt={animal.name} style={imgStyle} />
             </div>
-            <Link to={`${animal.id}/edit`}>Link to Edit Page</Link>
+            <Link to={`${animal.id}/edit`} animal={animal}>Link to Edit Page</Link>
         </div>)
     }
 

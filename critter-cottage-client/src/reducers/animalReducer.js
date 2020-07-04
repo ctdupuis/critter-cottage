@@ -20,6 +20,11 @@ export default function animalReducer(
             return {
                 animals: action.animals
             }
+        case 'UPDATE_ANIMAL':
+            const keepThese = state.animals.filter(an => an.id !== action.animal.id)
+            return {
+                animals: [...keepThese, action.animal]
+            }
         default: return state;
     }
 }
