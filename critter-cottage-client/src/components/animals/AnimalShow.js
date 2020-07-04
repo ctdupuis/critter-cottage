@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const AnimalShow = ({ animals, match, removeAnimal, history }) => {
+const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
     const genderSym = {
         'Male': '♂',
         'Female': '♀'
@@ -30,18 +30,29 @@ const AnimalShow = ({ animals, match, removeAnimal, history }) => {
             <div className='img-container' style={container}>
                 <img src={`http://localhost:3001/${animal.image_url}`} alt={animal.name} style={imgStyle} />
             </div>
-            <Link to={`${animal.id}/edit`} animal={animal}>Link to Edit Page</Link>
-            <button 
-            onClick={() => {
-                removeAnimal(animal.id)
-                history.push('/animals')
-                }}>X</button>
         </div>)
+    }
+
+    const renderAdminLinks = (animal) => {
+        if (currentUser && currentUser.admin) {
+            return(
+                <>
+                    <Link to={`${animal.id}/edit`} animal={animal}>Link to Edit Page</Link>
+                    <button 
+                        onClick={ () => {
+                            removeAnimal(animal.id)
+                            history.push('/animals')
+                        }}>X</button>
+                    
+                </>
+            )
+        }
     }
 
     return(
         <React.Fragment>
             {animal ? renderCard(animal) : <p>AnimalShow Component</p>}
+            {renderAdminLinks(animal)}
         </React.Fragment>
     )
 }

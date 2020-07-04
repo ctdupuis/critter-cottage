@@ -1,18 +1,24 @@
-import React from 'react'
-import AnimalCard from './AnimalCard'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import AnimalCard from './AnimalCard';
+import { Link } from 'react-router-dom';
 
 
-const AnimalsPage = ({ animals} ) => {
+const AnimalsPage = ({ animals, currentUser }) => {
     const renderAnimals = animals.map(animal => {
         return (<AnimalCard key={animal.id} animal={animal} />)
     })
+
+    const renderFormLink = () => {
+        if (currentUser && currentUser.admin) {
+            return <Link to={'/animals/new'}>Add a New Animal</Link>
+        }
+    }
 
     return(
         <React.Fragment>
             {renderAnimals}
             <br />
-            <Link to={'/animals/new'}>New Animal Form</Link>
+            {renderFormLink()}
         </React.Fragment>
     )
 }
