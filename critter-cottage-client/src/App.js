@@ -1,23 +1,18 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import Home from './components/Home'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import AnimalsContainer from './containers/AnimalsContainer';
-import AnimalInput from './components/animals/AnimalInput';
-import AnimalShow from './components/animals/AnimalShow';
-import AnimalsPage from './components/animals/AnimalsPage'
-import { connect } from 'react-redux'
 import SessionsContainer from './containers/SessionsContainer';
-import { getLoginStatus } from './actions/sessions'
-import NavBar from './components/NavBar';
-import LoginForm from './components/sessions/LoginForm';
-import SignupForm from './components/sessions/SignupForm';
-import Profile from './components/sessions/Profile'
+// import AnimalInput from './components/animals/AnimalInput';
+// import AnimalShow from './components/animals/AnimalShow';
+// import AnimalsPage from './components/animals/AnimalsPage'
+// import { connect } from 'react-redux'
+// import { getLoginStatus } from './actions/sessions'
+// import NavBar from './components/NavBar';
+// import LoginForm from './components/sessions/LoginForm';
+// import SignupForm from './components/sessions/SignupForm';
+// import Profile from './components/sessions/Profile'
 
 
 class App extends Component {
@@ -54,13 +49,13 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-    return {
-      currentUser: state.userReducer.currentUser,
-      animals: state.animalReducer.animals,
-      errors: state.userReducer.errors
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//       currentUser: state.userReducer.currentUser,
+//       animals: state.animalReducer.animals,
+//       errors: state.userReducer.errors
+//     }
+// }
 
 // export default connect(mapStateToProps)(App);
 export default App;

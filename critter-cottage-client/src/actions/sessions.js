@@ -9,8 +9,6 @@ export const login = userdata => {
             }, { withCredentials: true }
             )
         const resp = response.data
-        // return resp
-        console.log(resp)
             if (resp.logged_in === true) {
                 const user = resp.user
                 dispatch({ type: 'LOGIN_USER', user })
@@ -42,9 +40,9 @@ export const signup = userdata => {
     }
 }
 
-const signIn = (user) => {
-    return({ type: 'LOGIN_USER', user })
-}
+// const signIn = (user) => {
+//     return({ type: 'LOGIN_USER', user })
+// }
 
 
 export const getLoginStatus = () => {
@@ -64,6 +62,5 @@ export const endSession = () => {
     return (dispatch) =>  {
         axios.get('http://localhost:3001/logout', { withCredentials: true})
         .then(res => dispatch({ type: 'LOGOUT_USER' }))
-        // dispatch({ type: "LOGOUT_USER" })
     }
 }

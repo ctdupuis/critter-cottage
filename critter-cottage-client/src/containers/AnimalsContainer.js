@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import AnimalInput from '../components/animals/AnimalInput'
 import AnimalsPage from '../components/animals/AnimalsPage'
 import AnimalShow from '../components/animals/AnimalShow';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { fetchAnimals, addAnimal } from '../actions/animals'
 
 

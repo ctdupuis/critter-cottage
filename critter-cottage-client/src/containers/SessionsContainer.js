@@ -5,7 +5,6 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NavBar from '../components/NavBar';
 import Profile from '../components/sessions/Profile';
-import { endSession } from '../actions/sessions';
 import { getLoginStatus } from '../actions/sessions'
 
 class SessionsContainer extends Component {
