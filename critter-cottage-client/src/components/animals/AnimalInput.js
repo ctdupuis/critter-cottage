@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { DirectUpload } from 'activestorage'
 
 export default class AnimalInput extends Component {
     state = {
@@ -6,25 +7,24 @@ export default class AnimalInput extends Component {
         species: '',
         gender: '',
         breed: '',
-        image: {}
+        bio: '',
+        image: undefined
     }
     
     handleOnChange = event => {
         if (event.target.name === 'image') {
-            this.setState({
-                [event.target.name]: event.target.files[0]
+            const upload = new DirectUpload(event.target.files[0], 'http://localhost:3001/rails/active_storage/direct_uploads')
+            upload.create((error, blob) => {
+                this.setState({
+                    image: blob.signed_id
+                })
+
             })
         } else {
             this.setState({
                 [event.target.name]: event.target.value
             })
         }
-    }
-
-    setRedirect = () => {
-        this.setState({
-            redirect: true
-        })
     }
 
     handleOnSubmit = event => {
@@ -34,8 +34,12 @@ export default class AnimalInput extends Component {
             name: '',
             gender: '',
             species: '',
-            bio: ''
+            breed: '',
+            bio: '',
+            image: undefined
         })
+
+        this.props.history.push('/animals')
     }
 
     render() {

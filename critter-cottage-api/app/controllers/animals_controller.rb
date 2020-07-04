@@ -5,9 +5,26 @@ class AnimalsController < ApplicationController
         render json: animals, methods: :image_url, except: [:created_at, :updated_at]
     end
 
-    # def create 
-    #     binding.pry
-    #     render json { status: 'hit the route' }
-    # end
+    def create 
+        animal = Animal.create(
+            name: params[:name],
+            gender: params[:gender],
+            species: params[:species],
+            breed: params[:breed],
+            bio: params[:bio]
+        )
+        animal.image.attach(params[:image])
+        if animal.save
+            render json: animal, methods: :image_url
+        else
+            render json: { error: animal.errors.full_messages }
+        end
+    end
+
+    def update
+        animal = Animal.find(params[:id])
+        animal.update(image: params[:image])
+        render json: animal, methods: :image_url, except: [:created_at, :updated_at]
+    end
     
 end

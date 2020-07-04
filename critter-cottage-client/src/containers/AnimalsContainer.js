@@ -22,7 +22,8 @@ class AnimalsContainer extends Component {
 
                     <Route exact path={'/animals'} 
                         render={routerProps => <AnimalsPage animals={this.props.animals} currentUser={this.props.currentUser} {...routerProps} />} />
-                    <Route exact path={'/animals/new'} component={AnimalInput} /> 
+                    <Route exact path={'/animals/new'} 
+                        render={routerProps => <AnimalInput addAnimal={this.props.addAnimal} {...routerProps} />} /> 
                     <Route exact path={'/animals/:animalID'} 
                         render={routerProps => <AnimalShow {...routerProps} animals={this.props.animals} />} />
 

@@ -6,7 +6,7 @@ const Profile = ({ user }) => {
     const renderProfile = () => {
         if (admin) {
             return(<div>
-                Welcome, {f_name} {l_name}. You are an administrator.
+                Welcome, {f_name} {l_name}. 👑
             </div>)
         } else {
             return(<div>
