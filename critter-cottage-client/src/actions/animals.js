@@ -31,4 +31,11 @@ export function addAnimal(animaldata) {
   }
 }
 
+export function updateAnimal(animaldata, animalID) {
+  return async (dispatch) => {
+    // dispatch({ type: 'START_ADD_ANIMAL'})
+    console.log(`http://localhost:3001/animals/${animalID}`)
+    // const response = await axios.put(`http://localhost:3001${url}`)
+  }
+}
 

@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { DirectUpload } from 'activestorage'
+import React, { Component } from 'react';
+import { DirectUpload } from 'activestorage';
 
 export default class AnimalInput extends Component {
     state = {
