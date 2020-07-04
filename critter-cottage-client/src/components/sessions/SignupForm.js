@@ -1,6 +1,4 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { signup } from '../../actions/sessions'
+import React, { Component } from 'react';
 
 class SignupForm extends Component {
     state = {
@@ -32,7 +30,7 @@ class SignupForm extends Component {
             f_name: '',
             l_name: ''
         })
-        this.props.history.replace('/profile')
+        setTimeout(() => this.props.history.replace('/profile'), 400)
     }
 
     renderError = () => {
@@ -82,5 +80,4 @@ class SignupForm extends Component {
     }
 }
 
-
-export default connect(null, { signup })(SignupForm)
+export default SignupForm;

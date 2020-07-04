@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AnimalShow = ({ animals, match, removeAnimal, history }) => {
-    console.log('AnimalShow rendered')
     const genderSym = {
         'Male': '♂',
         'Female': '♀'

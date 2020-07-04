@@ -56,4 +56,3 @@ export function removeAnimal(animalID) {
     dispatch({ type: 'REMOVE_ANIMAL', animal })
   }
 }
-//DELETE /animals/:id
