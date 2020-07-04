@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NavBar from '../components/NavBar';
 import Profile from '../components/sessions/Profile';
-import { getLoginStatus, login, signup } from '../actions/sessions'
+import { getLoginStatus, login, signup, endSession } from '../actions/sessions'
 
 class SessionsContainer extends Component {
 
@@ -16,7 +16,9 @@ class SessionsContainer extends Component {
     render() {
         return (
             <React.Fragment>
-                <NavBar currentUser={this.props.currentUser} />
+                <NavBar 
+                currentUser={this.props.currentUser}
+                endSession={this.props.endSession} />
 
                 <Route exact path='/login'
                     render={props => 
@@ -54,7 +56,8 @@ export default connect(
     { 
         getLoginStatus,
         login,
-        signup
+        signup,
+        endSession
     }
     )(SessionsContainer);
 
