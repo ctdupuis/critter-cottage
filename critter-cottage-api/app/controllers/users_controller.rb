@@ -26,7 +26,10 @@ class UsersController < ApplicationController
         if user && user.authenticate(params[:password])
             user_reqs = Request.filter(user)
             session[:user_id] = user.id
-            render json: { logged_in: true, requests: user_reqs, user: user.as_json(only: [:id, :email, :f_name, :l_name, :admin]) }
+            render json: { 
+                logged_in: true,
+                requests: user_reqs.as_json(include: [:animal, :user, except: [:password_digest]]),
+                user: user.as_json(only: [:id, :email, :f_name, :l_name, :admin]) }
         elsif !user
             render json: { logged_in: false, error: "That email could not be found"}
         elsif !user.authenticate(params[:password])
@@ -35,11 +38,13 @@ class UsersController < ApplicationController
     end
 
     def logged_in
-        # binding.pry
         if @current_user
-            # binding.pry
             user_reqs = Request.filter(@current_user)
-            render json: { logged_in: true, user: @current_user, requests: user_reqs }
+            render json: { 
+                logged_in: true,
+                user: @current_user,
+                requests: user_reqs.as_json(include: [:animal, :user])
+            }
         else
             render json: { logged_in: false }
         end

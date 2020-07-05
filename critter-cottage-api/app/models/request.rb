@@ -9,4 +9,8 @@ class Request < ApplicationRecord
             self.where("user_id = ?", user.id)
         end
     end
+
+    def as_json(options={})
+        super(include: [:animal, :user])
+    end 
 end

@@ -17,39 +17,59 @@ class SessionsContainer extends Component {
     render() {
         return (
             <React.Fragment>
+
                 <NavBar 
-                currentUser={this.props.currentUser}
-                endSession={this.props.endSession} />
+                    currentUser={this.props.currentUser}
+                    endSession={this.props.endSession} 
+                />
 
                 <Route exact path='/login'
                     render={props => 
                         (!this.props.currentUser) ?
-                        <LoginForm 
-                        login={this.props.login} 
-                        errors={this.props.errors} 
-                        currentUser={this.props.currentUser} {...props} /> 
-                        :
-                        <Redirect to={'/profile'} />
+                            <LoginForm 
+                                login={this.props.login} 
+                                errors={this.props.errors} 
+                                {...props} 
+                            /> 
+                            :
+                            <Redirect to={'/profile'} />
                     } 
                 />
                 
                 <Route exact path='/signup'
                     render={props => 
                         (!this.props.currentUser) ? 
-                        <SignupForm signup={this.props.signup} user={this.props.currentUser} {...props} />  
-                        : 
-                        <SignupForm signup={this.props.signup} errors={this.props.errors} /> }
+                            <SignupForm 
+                                signup={this.props.signup} 
+                                {...props} 
+                            />  
+                            : 
+                            <SignupForm 
+                                signup={this.props.signup} 
+                                errors={this.props.errors} 
+                            /> 
+                    }
                 />
 
                 <Route exact path='/profile'
                     render={props => 
                         (this.props.currentUser) ? 
                         <>
-                            <Profile user={this.props.currentUser} {...props} /> 
-                            <ReqContainer requests={this.props.requests} {...props} />
+                            <Profile 
+                                user={this.props.currentUser} 
+                                {...props} 
+                            /> 
+                            <ReqContainer 
+                                currentUser={this.props.currentUser} 
+                                requests={this.props.requests} 
+                                {...props} 
+                            />
                         </>
                         : 
-                        <Redirect to={'/login'} errors={this.props.errors} /> }
+                        <Redirect to={'/login'} 
+                            errors={this.props.errors} 
+                        /> 
+                    }
                 />
 
             </React.Fragment>

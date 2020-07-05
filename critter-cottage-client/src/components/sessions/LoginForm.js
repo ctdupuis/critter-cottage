@@ -24,10 +24,11 @@ class LoginForm extends Component {
             email: '',
             password: ''
         })
-        setTimeout(() => this.props.history.replace('/profile'), 400)
+        // setTimeout(() => this.props.history.replace('/profile'), 400)
+        this.props.history.replace('/profile')
     }
 
-    renderError = clear => {
+    renderError = () => {
         if (this.props.errors) {
             return <div className='error'>{this.props.errors}</div>
         }
@@ -41,7 +42,7 @@ class LoginForm extends Component {
     render() {
         return (
             <div>
-                {this.renderError(this.clearError)}
+                {this.renderError()}
                 <form method="POST" onSubmit={this.handleOnSubmit}>
                     <label>Email</label>
                     <input 

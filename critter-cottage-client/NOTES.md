@@ -1,6 +1,6 @@
 Animals optionally belong to users, need an adopt request feature
-Build functionality for user to fill out/submit adoption application
 Build functionality for admin to approve/deny adoption applications
+Add the ReqForm attributes to the Request model
 Add adopted conditional for animals
 Desparately needs styling
 

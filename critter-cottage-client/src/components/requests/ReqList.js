@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import Request from '../requests/Request';
 
-const ReqList = ({ requests }) => {
-    const renderReqs = requests.map(req => <Request key={req.id} request={req} />)
+const ReqList = ({ requests, currentUser }) => {
+    const renderReqs = requests.map(req => <Request key={req.id} currentUser={currentUser} request={req} />)
     
     
     return(

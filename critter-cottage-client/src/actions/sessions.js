@@ -12,7 +12,9 @@ export const login = userdata => {
         console.log("user data right after login", resp)
             if (resp.logged_in === true) {
                 const user = resp.user
+                const reqs = resp.requests
                 dispatch({ type: 'LOGIN_USER', user })
+                dispatch({ type: 'STORE_REQUESTS', reqs })
             } else {
                 const err = resp.error
                 dispatch({ type: 'LOGIN_ERROR', err })
@@ -34,9 +36,8 @@ export const signup = userdata => {
         // console.log("user data right after signup", resp)
         if (resp.status === "created") {
             const user = resp.user
-            const reqs = resp.requests
+            // const reqs = resp.requests
             dispatch({ type: 'LOGIN_USER', user })
-            dispatch({ type: 'STORE_REQUESTS', reqs })
         } else {
             const err = resp.errors
             dispatch({ type: 'LOGIN_ERROR', err })
