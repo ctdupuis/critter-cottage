@@ -6,7 +6,6 @@ export default function userReducer(
 ) {
     switch (action.type) {
         case 'LOGIN_USER':
-            console.log(action)
             return {
                 ...state,
                 currentUser: action.user

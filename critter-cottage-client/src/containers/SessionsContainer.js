@@ -5,7 +5,8 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NavBar from '../components/NavBar';
 import Profile from '../components/sessions/Profile';
-import { getLoginStatus, login, signup, endSession } from '../actions/sessions'
+import { getLoginStatus, login, signup, endSession } from '../actions/sessions';
+import ReqContainer from '../containers/ReqContainer';
 
 class SessionsContainer extends Component {
 
@@ -43,7 +44,10 @@ class SessionsContainer extends Component {
                 <Route exact path='/profile'
                     render={props => 
                         (this.props.currentUser) ? 
-                        <Profile user={this.props.currentUser} requests={this.props.requests} {...props} /> 
+                        <>
+                            <Profile user={this.props.currentUser} {...props} /> 
+                            <ReqContainer requests={this.props.requests} {...props} />
+                        </>
                         : 
                         <Redirect to={'/login'} errors={this.props.errors} /> }
                 />

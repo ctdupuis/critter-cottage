@@ -17,6 +17,7 @@ const Profile = ({ user }) => {
     return(
         <div>
            {renderProfile()}
+           <br />
         </div>
     )
 }

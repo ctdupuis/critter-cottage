@@ -4,7 +4,6 @@ export default function ReqReducer(
     },
     action
 ) {
-    console.log('reqReducer', action)
     switch(action.type) {
         case 'STORE_REQUESTS':
             return {
