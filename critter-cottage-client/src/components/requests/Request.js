@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default Request = ({ request }) => {
+const Request = ({ request }) => {
     const { id, status } = request
     return(
         <div>
@@ -8,3 +8,5 @@ export default Request = ({ request }) => {
         </div>
     )
 }
+
+export default Request;
