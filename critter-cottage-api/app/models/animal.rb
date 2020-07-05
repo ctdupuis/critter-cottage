@@ -1,6 +1,7 @@
 class Animal < ApplicationRecord
     has_one_attached :image
     belongs_to :user, optional: true
+    has_many :requests
 
     def image_url
         if self.image.attached?

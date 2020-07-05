@@ -37,6 +37,6 @@ end
 
 users.each{ |user| User.create(user) }
 
-# Tom Nook requesting to adopt Li'l Sebastian
-Request.create(user_id: 2, admin_id: 1, animal_id: 3)
+# Riley Ward requesting to adopt Li'l Sebastian
+Request.create(user_id: 3, admin_id: 1, animal_id: 3)
 

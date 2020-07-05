@@ -9,6 +9,11 @@ export default function ReqReducer(
             return {
                 requests: action.reqs
             }
+        case 'ADD_REQUEST':
+            return {
+                ...state,
+                requests: [...state.requests, action.request]
+            }
         case 'RESET_REQS':
             return {
                 requests: []

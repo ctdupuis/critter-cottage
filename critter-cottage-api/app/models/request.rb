@@ -1,5 +1,6 @@
 class Request < ApplicationRecord
     belongs_to :user
+    belongs_to :animal
 
     def self.filter(user)
         if user.admin

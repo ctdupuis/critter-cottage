@@ -7,6 +7,7 @@ import AnimalEdit from '../components/animals/AnimalEdit';
 import ReqForm from '../components/requests/ReqForm';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { fetchAnimals, addAnimal, updateAnimal, removeAnimal } from '../actions/animals';
+import { sendAdoptionForm } from '../actions/requests';
 
 
 class AnimalsContainer extends Component {
@@ -26,7 +27,8 @@ class AnimalsContainer extends Component {
                         render={routerProps => 
                         (this.props.currentUser && this.props.currentUser.admin) ?
                             <AnimalInput {...routerProps} 
-                                addAnimal={this.props.addAnimal}  /> 
+                                addAnimal={this.props.addAnimal}  
+                            /> 
                             :
                             <Redirect to={'/animals'} />
                         }
@@ -34,10 +36,12 @@ class AnimalsContainer extends Component {
 
                     <Route exact path={'/animals/:animalID'} 
                         render={routerProps => 
-                        <AnimalShow {...routerProps} 
-                            animals={this.props.animals}
-                            removeAnimal={this.props.removeAnimal}
-                            currentUser={this.props.currentUser} />} 
+                            <AnimalShow {...routerProps} 
+                                animals={this.props.animals}
+                                removeAnimal={this.props.removeAnimal}
+                                currentUser={this.props.currentUser} 
+                            />
+                        } 
                     />
 
                     <Route exact path={'/animals/:animalID/edit'}
@@ -45,7 +49,8 @@ class AnimalsContainer extends Component {
                         (this.props.currentUser && this.props.currentUser.admin) ?
                             <AnimalEdit {...routerProps} 
                                 animals={this.props.animals} 
-                                updateAnimal={this.props.updateAnimal} /> 
+                                updateAnimal={this.props.updateAnimal} 
+                            /> 
                             :
                             <Redirect to={'/animals'} />
                         }
@@ -53,22 +58,26 @@ class AnimalsContainer extends Component {
 
                     <Route exact path={'/animals/:animalID/adopt'}
                         render={routerProps => 
-                        (this.props.currentUser) ?
+                        // (this.props.currentUser) ?
                             <ReqForm {...routerProps}
                                 animals={this.props.animals}
-                                currentUser={this.props.currentUser} /> 
-                            :
-                            <Redirect to={'/login'} />
+                                currentUser={this.props.currentUser}
+                                sendAdoptionForm={this.props.sendAdoptionForm} 
+                            /> 
+                            // :
+                            // <Redirect to={'/login'} />
                         }
                     />
                         
 
                     <Route exact path={'/animals'} 
                         render={routerProps => 
-                        <AnimalsPage {...routerProps} 
-                            animals={this.props.animals} 
-                            currentUser={this.props.currentUser} 
-                            removeAnimal={this.props.removeAnimal} />} 
+                            <AnimalsPage {...routerProps} 
+                                animals={this.props.animals} 
+                                currentUser={this.props.currentUser} 
+                                removeAnimal={this.props.removeAnimal} 
+                            />
+                        } 
                     />
 
                 </Switch>
@@ -86,6 +95,7 @@ export default connect(
         fetchAnimals, 
         addAnimal, 
         updateAnimal, 
-        removeAnimal 
+        removeAnimal,
+        sendAdoptionForm 
     }
 )(AnimalsContainer);
