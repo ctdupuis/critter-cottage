@@ -4,6 +4,7 @@ import AnimalInput from '../components/animals/AnimalInput';
 import AnimalsPage from '../components/animals/AnimalsPage';
 import AnimalShow from '../components/animals/AnimalShow';
 import AnimalEdit from '../components/animals/AnimalEdit';
+import ReqForm from '../components/requests/ReqForm';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { fetchAnimals, addAnimal, updateAnimal, removeAnimal } from '../actions/animals';
 
@@ -24,9 +25,10 @@ class AnimalsContainer extends Component {
                     <Route exact path={'/animals/new'} 
                         render={routerProps => 
                         (this.props.currentUser && this.props.currentUser.admin) ?
-                        <AnimalInput {...routerProps} 
-                            addAnimal={this.props.addAnimal}  /> :
-                        <Redirect to={'/animals'} />
+                            <AnimalInput {...routerProps} 
+                                addAnimal={this.props.addAnimal}  /> 
+                            :
+                            <Redirect to={'/animals'} />
                         }
                     /> 
 
@@ -41,12 +43,25 @@ class AnimalsContainer extends Component {
                     <Route exact path={'/animals/:animalID/edit'}
                         render={routerProps => 
                         (this.props.currentUser && this.props.currentUser.admin) ?
-                        <AnimalEdit {...routerProps} 
-                            animals={this.props.animals} 
-                            updateAnimal={this.props.updateAnimal} /> :
-                        <Redirect to={'/animals'} />
+                            <AnimalEdit {...routerProps} 
+                                animals={this.props.animals} 
+                                updateAnimal={this.props.updateAnimal} /> 
+                            :
+                            <Redirect to={'/animals'} />
                         }
                     />
+
+                    <Route exact path={'/animals/:animalID/adopt'}
+                        render={routerProps => 
+                        (this.props.currentUser) ?
+                            <ReqForm {...routerProps}
+                                animals={this.props.animals}
+                                currentUser={this.props.currentUser} /> 
+                            :
+                            <Redirect to={'/login'} />
+                        }
+                    />
+                        
 
                     <Route exact path={'/animals'} 
                         render={routerProps => 

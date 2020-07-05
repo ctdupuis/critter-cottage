@@ -6,8 +6,15 @@ export default class ReqContainer extends Component {
     render() {
         return (
             <div>
-                <h4>Below are a list of your requests</h4>
-                <ReqList requests={this.props.requests} />
+                {
+                    (this.props.requests.first) ? 
+                    <>
+                        <h4>Below are a list of your requests</h4>
+                        <ReqList requests={this.props.requests} />
+                    </>
+                    :
+                    <h4>You have no Requests yet</h4>
+                }
             </div>
         )
     }

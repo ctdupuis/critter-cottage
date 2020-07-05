@@ -30,6 +30,8 @@ const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
             <div className='img-container' style={container}>
                 <img src={`http://localhost:3001/${animal.image_url}`} alt={animal.name} style={imgStyle} />
             </div>
+            <br/>
+            <Link to={`/animals/${animal.id}/adopt`}>Request to Adopt</Link>
         </div>)
     }
 
@@ -52,6 +54,7 @@ const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
     return(
         <React.Fragment>
             {animal ? renderCard(animal) : <p>AnimalShow Component</p>}
+            <br />
             {renderAdminLinks(animal)}
         </React.Fragment>
     )
