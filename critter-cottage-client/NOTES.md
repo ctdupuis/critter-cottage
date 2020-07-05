@@ -1,11 +1,39 @@
 Animals optionally belong to users, need an adopt request feature
-Build functionality for user to fill out adoption application
+Build functionality for user to fill out/submit adoption application
 Build functionality for admin to approve/deny adoption applications
+Add adopted conditional for animals
 Desparately needs styling
 
-Presentational Components:
-Containers Components:
-Stateless Components:
+Presentational Components: 8
+    Home
+    NavBar
+    AnimalCard
+    AnimalShow
+    AnimalsPage
+    ReqList
+    Request
+    Profile
+
+Stateless Components: 8
+    Home 
+    NavBar
+    AnimalCard
+    AnimalShow
+    AnimalsPage
+    ReqList
+    Request
+    Profile
+
+Class Components: 4
+    AnimalEdit
+    AnimalInput
+    LoginForm
+    SignupForm
+
+Containers Components: 3
+    AnimalsContainer
+    SessionsContainer
+    ReqContainer
 
 
 
