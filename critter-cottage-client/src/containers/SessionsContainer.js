@@ -22,10 +22,14 @@ class SessionsContainer extends Component {
 
                 <Route exact path='/login'
                     render={props => 
+                        (!this.props.currentUser) ?
                         <LoginForm 
                         login={this.props.login} 
                         errors={this.props.errors} 
-                        currentUser={this.props.currentUser} {...props} />} 
+                        currentUser={this.props.currentUser} {...props} /> 
+                        :
+                        <Redirect to={'/profile'} />
+                    } 
                 />
                 
                 <Route exact path='/signup'
@@ -39,7 +43,7 @@ class SessionsContainer extends Component {
                 <Route exact path='/profile'
                     render={props => 
                         (this.props.currentUser) ? 
-                        <Profile user={this.props.currentUser} {...props} /> 
+                        <Profile user={this.props.currentUser} requests={this.props.requests} {...props} /> 
                         : 
                         <Redirect to={'/login'} errors={this.props.errors} /> }
                 />
@@ -51,7 +55,8 @@ class SessionsContainer extends Component {
 
 export default connect(
     state => ({ 
-        currentUser: state.userReducer.currentUser
+        currentUser: state.userReducer.currentUser,
+        requests: state.reqReducer.requests
     }),
     { 
         getLoginStatus,

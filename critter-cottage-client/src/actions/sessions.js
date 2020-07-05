@@ -34,7 +34,9 @@ export const signup = userdata => {
         // console.log("user data right after signup", resp)
         if (resp.status === "created") {
             const user = resp.user
+            const reqs = resp.requests
             dispatch({ type: 'LOGIN_USER', user })
+            dispatch({ type: 'STORE_REQUESTS', reqs })
         } else {
             const err = resp.errors
             dispatch({ type: 'LOGIN_ERROR', err })
@@ -55,7 +57,9 @@ export const getLoginStatus = () => {
         console.log('result of session check', data)
         if (data.logged_in === true ) {
             const user = data.user
+            const reqs = data.requests
             dispatch({ type: 'LOGIN_USER', user })
+            dispatch({ type: 'STORE_REQUESTS', reqs })
         }
     }
 }

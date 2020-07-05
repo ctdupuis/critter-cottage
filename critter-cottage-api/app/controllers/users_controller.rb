@@ -38,7 +38,8 @@ class UsersController < ApplicationController
         # binding.pry
         if @current_user
             # binding.pry
-            render json: { logged_in: true, user: @current_user }
+            user_reqs = Request.filter(@current_user)
+            render json: { logged_in: true, user: @current_user, requests: user_reqs }
         else
             render json: { logged_in: false }
         end
