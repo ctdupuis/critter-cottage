@@ -27,14 +27,14 @@ export default class ReqContainer extends Component {
         return (
             <React.Fragment>
                 <Switch>
-                    <Route exact path={'/requests/:reqID'} 
+                    {/* <Route exact path={'/requests/:requestID'} 
                         render={props => 
                             <ReqReview
                                 requests={this.props.requests}
                                 {...props}
                             />
                         }
-                    />
+                    /> */}
 
                     {this.conditionalRender()}
                 </Switch>

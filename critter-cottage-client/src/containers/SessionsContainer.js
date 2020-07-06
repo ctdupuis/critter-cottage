@@ -7,6 +7,7 @@ import NavBar from '../components/NavBar';
 import Profile from '../components/sessions/Profile';
 import { getLoginStatus, login, signup, endSession } from '../actions/sessions';
 import ReqContainer from '../containers/ReqContainer';
+import ReqReview from '../components/requests/ReqReview';
 
 class SessionsContainer extends Component {
 
@@ -56,7 +57,8 @@ class SessionsContainer extends Component {
                         (this.props.currentUser) ? 
                         <>
                             <Profile 
-                                user={this.props.currentUser} 
+                                currentUser={this.props.currentUser} 
+                                requests={this.props.requests}
                                 {...props} 
                             /> 
                             <ReqContainer 
@@ -71,6 +73,15 @@ class SessionsContainer extends Component {
                         /> 
                     }
                 />
+                
+                <Route exact path={'/requests/:requestID'} 
+                        render={props => 
+                            <ReqReview
+                                requests={this.props.requests}
+                                {...props}
+                            />
+                        }
+                    />
 
             </React.Fragment>
         )

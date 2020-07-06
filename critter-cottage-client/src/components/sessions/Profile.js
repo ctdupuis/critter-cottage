@@ -1,7 +1,8 @@
 import React from 'react';
 
-const Profile = ({ user }) => {
-    const { email, admin, f_name, l_name } = user
+
+const Profile = ({ currentUser}) => {
+    const { email, admin, f_name, l_name } = currentUser
 
     const renderProfile = () => {
         if (admin) {
@@ -18,6 +19,7 @@ const Profile = ({ user }) => {
         <div>
            {renderProfile()}
            <br />
+           
         </div>
     )
 }
