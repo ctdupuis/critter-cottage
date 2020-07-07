@@ -13,3 +13,14 @@ export function sendAdoptionForm(formdata) {
         dispatch({ type: 'ADD_REQUEST', request })
     }
 }
+
+export function sendReview(reviewdata) {
+    return async dispatch => {
+        console.log(reviewdata)
+        const response = await axios.put(`http://localhost:3001/requests/${reviewdata.id}`, {
+            status: reviewdata.status
+        }, { withCredentials: true })
+        const request = response.data
+        dispatch({ type: 'UPDATE_REQUEST', request })
+    }
+}

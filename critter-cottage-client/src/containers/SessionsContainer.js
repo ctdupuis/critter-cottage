@@ -6,8 +6,10 @@ import { connect } from 'react-redux';
 import NavBar from '../components/NavBar';
 import Profile from '../components/sessions/Profile';
 import { getLoginStatus, login, signup, endSession } from '../actions/sessions';
+import { sendReview } from '../actions/requests';
 import ReqContainer from '../containers/ReqContainer';
 import ReqReview from '../components/requests/ReqReview';
+
 
 class SessionsContainer extends Component {
 
@@ -73,11 +75,12 @@ class SessionsContainer extends Component {
                         /> 
                     }
                 />
-                
+
                 <Route exact path={'/requests/:requestID'} 
                         render={props => 
                             <ReqReview
                                 requests={this.props.requests}
+                                sendReview={this.props.sendReview}
                                 {...props}
                             />
                         }
@@ -97,7 +100,8 @@ export default connect(
         getLoginStatus,
         login,
         signup,
-        endSession
+        endSession,
+        sendReview
     }
     )(SessionsContainer);
 

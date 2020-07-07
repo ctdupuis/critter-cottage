@@ -18,6 +18,7 @@ export const login = userdata => {
             } else {
                 const err = resp.error
                 dispatch({ type: 'LOGIN_ERROR', err })
+                //try pushing history or returning history here
             }
     }
 }

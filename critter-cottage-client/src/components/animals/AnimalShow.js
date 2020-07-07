@@ -30,6 +30,7 @@ const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
             <div className='img-container' style={container}>
                 <img src={`http://localhost:3001/${animal.image_url}`} alt={animal.name} style={imgStyle} />
             </div>
+            <p>Here</p>
             <br/>
             <Link to={`/animals/${animal.id}/adopt`}>Request to Adopt</Link>
         </div>)

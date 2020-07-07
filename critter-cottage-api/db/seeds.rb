@@ -40,9 +40,9 @@ users.each{ |user| User.create(user) }
 # Riley Ward requesting to adopt Li'l Sebastian
 # Request.create(user_id: 3, admin_id: 1, animal_id: 3)
 reqs = [
-    {user_id: 3, animal_id: 3},
-    {user_id: 4, animal_id: 2},
-    {user_id: 2, animal_id: 1}
+    {user_id: 3, animal_id: 3, admin_id: 1},
+    {user_id: 4, animal_id: 2, admin_id: 1},
+    {user_id: 2, animal_id: 1, admin_id: 1}
 ]
 
 reqs.each{ |req| Request.create(req) }

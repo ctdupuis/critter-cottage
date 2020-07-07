@@ -8,7 +8,6 @@ class RequestsController < ApplicationController
                 animal_id: params[:animal_id],
                 experience: params[:experience]
             )
-            binding.pry
             render json: request, include: [:animal]
         else
             render json: { error: 'Must be logged in to submit an adoption request'}
@@ -16,6 +15,8 @@ class RequestsController < ApplicationController
     end
 
     def update
-
+        request = Request.find(params[:id])
+        request.update(status: params[:status])
+        render json: request
     end
 end
