@@ -24,24 +24,9 @@ class App extends Component {
     
       <Fragment>
 
-        {/* <NavBar currentUser={this.props.currentUser} /> */}
-
         <SessionsContainer />
         <AnimalsContainer />
         <Route exact path={'/'} component={Home} />
-        {/* <Route exact path={'/animals'} 
-          render={routerProps => <AnimalsPage animals={this.props.animals} currentUser={this.props.currentUser} {...routerProps} />} />
-        <Route exact path={'/animals/new'} component={AnimalInput} /> 
-        <Route exact path={'/animals/:animalID'} 
-          render={routerProps => <AnimalShow {...routerProps} animals={this.props.animals} />} /> */}
-        {/* <Route exact path='/login'
-          render={props => <LoginForm errors={this.props.errors} currentUser={this.props.currentUser} {...props} />} />
-        <Route exact path='/signup'
-          render={props => (!this.props.currentUser.email) ? <SignupForm user={this.props.currentUser} {...props} />  : <Redirect to={'/signup'} errors={this.props.errors} /> }
-        />
-        <Route exact path='/profile'
-          render={props => (this.props.currentUser.email) ? <Profile user={this.props.currentUser} {...props} /> : <Redirect to={'/login'} errors={this.props.errors} /> }
-        /> */}
 
       </Fragment>
     

@@ -1,33 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav'
+
 
 const NavBar = ({ currentUser, endSession }) => {
 
-    const renderLinks = () => {
-        if (!currentUser) {
-            return(<div>
-                <Link to='/'>Home</Link> || 
-                <Link to='/animals'>See Animals</Link> || 
-                <Link to='/login'>Log In</Link> || 
-                <Link to='/signup'>Sign Up</Link>
-            </div>)
-        } else {
-            return(<div>
-                <Link to='/'>Home</Link> || 
-                <Link to={'/animals'}>See Animals</Link> ||
-                <Link to={'/profile'}>My Profile</Link> ||
-                <Link to='/' onClick={() => endSession()}>Log Out</Link>
-            </div>)
-        }
+    if (!currentUser) {
+        return(<>
+            <Navbar bg='primary' variant='dark'>
+                <Navbar.Brand href='/'>Critter Cottage</Navbar.Brand>
+                <Nav className="mr-auto">
+                    <Nav.Link href="/animals">See Animals</Nav.Link>
+                    <Nav.Link href="/signup">Create Account</Nav.Link>
+                    <Nav.Link href="/login">Login</Nav.Link>
+                </Nav>
+            </Navbar>
+        </>)
+    } else {
+        return(<>
+            <Navbar bg='primary' variant='dark'>
+                <Navbar.Brand href='/'>Critter Cottage</Navbar.Brand>
+                <Nav className="mr-auto">
+                        <Nav.Link href="/animals">See Animals</Nav.Link>
+                        <Nav.Link href="/profile">My Profile</Nav.Link>
+                        <Nav.Link href="/" onClick={() => endSession()}>Log Out</Nav.Link>
+                </Nav>
+            </Navbar>
+        </>)
     }
-
-   
-
-    return(
-        <div>
-            {renderLinks()}
-        </div>
-    )
 }
 
 export default NavBar;
