@@ -8,10 +8,14 @@ const Profile = ({ currentUser}) => {
         if (admin) {
             return(<div>
                 Welcome, {f_name} {l_name}. 👑
+                <br />
+                You are registered with this email: {email}
             </div>)
         } else {
             return(<div>
                 Welcome, {f_name} {l_name}.
+                <br />
+                You are registered with this email: {email}
             </div>)
         }
     }

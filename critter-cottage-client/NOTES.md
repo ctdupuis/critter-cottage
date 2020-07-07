@@ -1,8 +1,10 @@
-Animals optionally belong to users, need an adopt request feature
-Build functionality for admin to approve/deny adoption applications
-Add the ReqForm attributes to the Request model
-Add adopted conditional for animals
-Desparately needs styling
+**Login, Signup, Request Review redirecting**
+*Add adopted conditional for animals that disables their adoption request forms, maybe even deletes them from the system after certain amount of time*
+*Desparately needs styling*
+
+Maybe add address model that belongs to User
+
+
 
 Presentational Components: 8
     Home

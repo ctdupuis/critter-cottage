@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import ReqList from '../components/requests/ReqList';
-import ReqReview from '../components/requests/ReqReview';
-import { Route, Switch } from 'react-router-dom';
-
 
 export default class ReqContainer extends Component {
 
@@ -26,18 +23,7 @@ export default class ReqContainer extends Component {
     render() {
         return (
             <React.Fragment>
-                <Switch>
-                    {/* <Route exact path={'/requests/:requestID'} 
-                        render={props => 
-                            <ReqReview
-                                requests={this.props.requests}
-                                {...props}
-                            />
-                        }
-                    /> */}
-
-                    {this.conditionalRender()}
-                </Switch>
+                {this.conditionalRender()}
             </React.Fragment>
         )
     }
