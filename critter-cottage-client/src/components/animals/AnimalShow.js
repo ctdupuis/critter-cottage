@@ -36,10 +36,11 @@ const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
     }
 
     const renderAdminLinks = (animal) => {
-        if (currentUser && currentUser.admin) {
+        
+        if (animal && currentUser && currentUser.admin) {
             return(
                 <>
-                    {/* <Link to={`${animal.id}/edit`} animal={animal}>Link to Edit Page</Link> */}
+                    <Link to={`${animal.id}/edit`} animal={animal}>Link to Edit Page</Link>
                     <button 
                         onClick={ () => {
                             removeAnimal(animal.id)

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { DirectUpload } from 'activestorage';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 export default class AnimalEdit extends Component {
     
@@ -44,74 +46,89 @@ export default class AnimalEdit extends Component {
     }
 
 
+    // bootStrapForm(animal) {
+    //     return(
+    //         <Form onSubmit={this.handleOnSubmit}>
+    //             <h3>Edit Info for a Friend!</h3>
+    //             <br />
+    //             <Form.Group controlId="formBasicName">
+    //                 <Form.Label>Name</Form.Label>
+    //                 <Form.Control name="name" onChange={this.handleOnChange} type="text" placeholder="Enter name" />
+    //             </Form.Group>
+
+    //             <Form.Group controlId="formBasicSpecies">
+    //                 <Form.Label>Species</Form.Label>
+    //                 <Form.Control name="species" type="text" placeholder="Animal Species" onChange={this.handleOnChange} />
+    //             </Form.Group>
+
+    //             <Form.Group controlId="formBasicBreed">
+    //                 <Form.Label>Breed</Form.Label>
+    //                 <Form.Control name="breed" type="text" placeholder="Animal Breed" onChange={this.handleOnChange} />
+    //             </Form.Group>
+
+    //             <Form.Group controlId="formBasicCheckbox">
+    //                 <Form.Check type="radio" name="gender" label="Male" value="Male" checked={this.state.gender === "Male"} onChange={this.handleOnChange} />
+    //                 <Form.Check type="radio" name="gender" label="Female" value="Female" checked={this.state.gender === "Female"} onChange={this.handleOnChange} />
+    //             </Form.Group>
+
+    //             <Form.Group controlId="formBasicBio">
+    //                 <Form.Label>Bio</Form.Label>
+    //                 <Form.Control name="bio" type="textarea" onChange={this.handleOnChange} />
+    //             </Form.Group>
+
+    //             <Form.Group>
+    //                 <Form.File name="image" onChange={this.handleOnChange} />
+    //             </Form.Group>
+
+    //             <Button variant="primary" type="submit">
+    //                 Add
+    //             </Button>
+    //         </Form>
+        // )
+    // }
 
     render() {
         const animal = this.props.animals.find(an => {
             return an.id === parseInt(this.props.match.params.animalID)
         })
         const { name, breed, species, gender, bio, image_url } = animal
-        // {this.setImageUrl(image_url)}
         return (
-            <div>
-                <h3>Edit an Animal</h3>
-                <form onSubmit={this.handleOnSubmit}>
-                    <label>Name</label>
-                    <input type='text' 
-                        name='name' 
-                        value={this.state.name} 
-                        placeholder={name} 
-                        onChange={this.handleOnChange} />
-                    <br />
+            <Form onSubmit={this.handleOnSubmit}>
+                <h3>Edit Info for a Friend!</h3>
+                <br />
+                <Form.Group controlId="formBasicName">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control name="name" placeholder={name} onChange={this.handleOnChange} type="text"  />
+                </Form.Group>
 
-                    <label>Select a Gender:</label>
-                    <input 
-                        type='radio' 
-                        name='gender' 
-                        value='Male' 
-                        onChange={this.handleOnChange} 
-                        checked={this.state.gender === 'Male'}/> Male
+                <Form.Group controlId="formBasicSpecies">
+                    <Form.Label>Species</Form.Label>
+                    <Form.Control name="species" placeholder={species} type="text" onChange={this.handleOnChange} />
+                </Form.Group>
 
-                    <input 
-                        type='radio' 
-                        name='gender' 
-                        value='Female' 
-                        onChange={this.handleOnChange} 
-                        checked={this.state.gender === 'Female'}/> Female
+                <Form.Group controlId="formBasicBreed">
+                    <Form.Label>Breed</Form.Label>
+                    <Form.Control name="breed" placeholder={breed} type="text" onChange={this.handleOnChange} />
+                </Form.Group>
 
-                    <br />
+                <Form.Group controlId="formBasicCheckbox">
+                    <Form.Check type="radio" name="gender" label="Male" value="Male" checked={this.state.gender === "Male"} onChange={this.handleOnChange} />
+                    <Form.Check type="radio" name="gender" label="Female" value="Female" checked={this.state.gender === "Female"} onChange={this.handleOnChange} />
+                </Form.Group>
 
-                    <label>Species</label>
-                    <input type='text' 
-                        name='species' 
-                        value={this.state.species}
-                        placeholder={species} 
-                        onChange={this.handleOnChange} />
-                    <br />
+                <Form.Group controlId="formBasicBio">
+                    <Form.Label>Bio</Form.Label>
+                    <Form.Control name="bio" placeholder={bio} type="textarea" onChange={this.handleOnChange} />
+                </Form.Group>
 
-                    <label>Breed</label>
-                    <input 
-                        type='text' 
-                        name='breed' 
-                        value={this.state.breed} 
-                        placeholder={breed}
-                        onChange={this.handleOnChange} />
-                    <br />
+                <Form.Group>
+                    <Form.File name="image" onChange={this.handleOnChange} />
+                </Form.Group>
 
-                    <label>Bio</label>
-                    <textarea 
-                        name='bio' 
-                        value={this.state.bio} 
-                        placeholder={bio}
-                        onChange={this.handleOnChange} />
-                    <br />
-
-                    {/* <label>Add a Picture!</label>
-                    <input type='file' name='image' onChange={this.handleOnChange} /> */}
-                    <br />
-
-                    <input type='submit' value='Save Changes' />
-                </form>
-            </div>
+                <Button variant="primary" type="submit">
+                    Save Changes
+                </Button>
+            </Form>
         )
     }
 }
