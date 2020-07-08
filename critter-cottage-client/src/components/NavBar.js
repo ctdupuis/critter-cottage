@@ -7,7 +7,7 @@ const NavBar = ({ currentUser, endSession }) => {
 
     if (!currentUser) {
         return(<>
-            <Navbar bg='primary' variant='dark'>
+            <Navbar bg='primary' variant='dark' sticky='top'>
                 <Navbar.Brand href='/'>Critter Cottage</Navbar.Brand>
                 <Nav className="mr-auto" className="justify-content-end">
                     <Nav.Link href="/animals">See Animals</Nav.Link>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
 
 const AnimalCard = ({ animal }) => {
 
@@ -12,11 +12,11 @@ const AnimalCard = ({ animal }) => {
     }
 
     return(
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={`http://localhost:3001/${image_url}`} />
+            <Card style={{ width: '18rem'}} margin={25} border={75}>             
+                    <Card.Img variant="top" width={300} height={300} src={`http://localhost:3001/${image_url}`} />               
                 <Card.Body>
-                    <Card.Title>{name} | {genderSym[gender]}</Card.Title>
-                    <Card.Subtitle>{breed}</Card.Subtitle>
+                    <Card.Title>{name}</Card.Title>
+                    <Card.Subtitle>{breed}</Card.Subtitle><Card.Subtitle align={'right'}>{genderSym[gender]}</Card.Subtitle>
                     <Card.Link href={`/animals/${id}`}>See {name}'s Page</Card.Link>
                 </Card.Body>
             </Card>
