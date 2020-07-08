@@ -14,24 +14,24 @@ const Home = props => {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--975f0cc20fda6bdaa0b8002df3521e802c460d13/Parker.jpg"
-                    alt="First slide"
+                    src="carousel/sleepyseb.jpg"
+                    alt="Sebi"
                 />
             <Carousel.Caption>
-                <h3>Puppies</h3>
-                <p>They sure are cute aren't they</p>
+                <h3>Sebastian</h3>
+                <p>Little Sebi having a little man snooze</p>
             </Carousel.Caption>
             </Carousel.Item>
 
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="holder.js/800x400?text=First slide&bg=373940"
+                    src="carousel/menmilo.jpg"
                     alt="Second slide"
                 />
             <Carousel.Caption>
-                <h3>Puppies</h3>
-                <p>They sure are cute aren't they</p>
+                <h3>Milo</h3>
+                <p>He loves being held like this</p>
             </Carousel.Caption>
             </Carousel.Item>
         </Carousel>

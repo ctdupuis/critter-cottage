@@ -9,7 +9,7 @@ const NavBar = ({ currentUser, endSession }) => {
         return(<>
             <Navbar bg='primary' variant='dark'>
                 <Navbar.Brand href='/'>Critter Cottage</Navbar.Brand>
-                <Nav className="mr-auto">
+                <Nav className="mr-auto" className="justify-content-end">
                     <Nav.Link href="/animals">See Animals</Nav.Link>
                     <Nav.Link href="/signup">Create Account</Nav.Link>
                     <Nav.Link href="/login">Login</Nav.Link>
@@ -20,7 +20,7 @@ const NavBar = ({ currentUser, endSession }) => {
         return(<>
             <Navbar bg='primary' variant='dark'>
                 <Navbar.Brand href='/'>Critter Cottage</Navbar.Brand>
-                <Nav className="mr-auto">
+                <Nav className="mr-auto" className="justify-content-end">
                         <Nav.Link href="/animals">See Animals</Nav.Link>
                         <Nav.Link href="/profile">My Profile</Nav.Link>
                         <Nav.Link href="/" onClick={() => endSession()}>Log Out</Nav.Link>
