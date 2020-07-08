@@ -17,7 +17,7 @@ const AnimalCard = ({ animal }) => {
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Subtitle>{breed}</Card.Subtitle><Card.Subtitle align={'right'}>{genderSym[gender]}</Card.Subtitle>
-                    <Card.Link href={`/animals/${id}`}>See {name}'s Page</Card.Link>
+                    <Card.Link href={`/animals/${id}`}>Details About {name}</Card.Link>
                 </Card.Body>
             </Card>
     )

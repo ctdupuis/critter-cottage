@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Form from 'react-bootstrap/Form';
 
 class LoginForm extends Component {
     state = {
@@ -43,7 +44,7 @@ class LoginForm extends Component {
         return (
             <div>
                 {this.renderError()}
-                <form method="POST" onSubmit={this.handleOnSubmit}>
+                <form onSubmit={this.handleOnSubmit}>
                     <label>Email</label>
                     <input 
                         type='text' 

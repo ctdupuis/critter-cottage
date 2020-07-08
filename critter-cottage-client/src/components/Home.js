@@ -8,11 +8,13 @@ const Home = props => {
         <>
         <Jumbotron>
             <h2>Welcome to Critter Cottage!</h2>
-            <p>Here at Critter Cottage, the animals are always our #1 Priority.</p>
+            <p>Here at Critter Cottage, the animals are always our top priority.</p>
+            <p>Our mission is to provide these animals with everything they need and do our very best to find them a loving home.</p>
         </Jumbotron>
-        <Carousel>
+        <Carousel style={{width: '20rem'}}>
             <Carousel.Item>
                 <img
+                    
                     className="d-block w-100"
                     src="carousel/sleepyseb.jpg"
                     alt="Sebi"
