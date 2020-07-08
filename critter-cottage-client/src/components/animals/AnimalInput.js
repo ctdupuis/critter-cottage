@@ -71,7 +71,7 @@ export default class AnimalInput extends Component {
 
                 <Form.Group controlId="formBasicBio">
                     <Form.Label>Bio</Form.Label>
-                    <Form.Control name="bio" type="textarea" placeholder="Write a description" onChange={this.handleOnChange} />
+                    <Form.Control name="bio" as="textarea" placeholder="Write a description" onChange={this.handleOnChange} />
                 </Form.Group>
 
                 <Form.Group>

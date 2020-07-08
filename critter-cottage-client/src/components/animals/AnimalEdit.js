@@ -118,7 +118,7 @@ export default class AnimalEdit extends Component {
 
                 <Form.Group controlId="formBasicBio">
                     <Form.Label>Bio</Form.Label>
-                    <Form.Control name="bio" placeholder={bio} type="textarea" onChange={this.handleOnChange} />
+                    <Form.Control name="bio" placeholder={bio} as="textarea" onChange={this.handleOnChange} />
                 </Form.Group>
 
                 <Form.Group>

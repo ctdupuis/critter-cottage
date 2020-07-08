@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 class SignupForm extends Component {
     state = {
@@ -41,42 +45,76 @@ class SignupForm extends Component {
 
     render() {
         return (
-            <div>
-                {this.renderError()}
-                <form method="POST" onSubmit={this.handleOnSubmit}>
+            <Form>
+                <h2>Create an Account</h2>
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="email" name="email" placeholder="Enter email" onChange={this.handleOnChange} />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="formGridPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" name="password" placeholder="Password" onChange={this.handleOnChange} />
+                    </Form.Group>
+                </Form.Row>
+
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Label>Firsr Name</Form.Label>
+                        <Form.Control type="text" name="f_name" placeholder="Enter First Name" onChange={this.handleOnChange} />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="formGridPassword">
+                        <Form.Label>Last Name</Form.Label>
+                        <Form.Control type="text" name="l_name" placeholder="Enter Last Name" onChange={this.handleOnChange} />
+                    </Form.Group>
+                </Form.Row>
+
+                <Form.Group as={Row}>
+                    <Col sm={{ span: 10, offset: 2 }}>
+                        <Button type="submit">Sign Up</Button>
+                    </Col>
+                </Form.Group>
+
+                
+            </Form>)
+        //     <div>
+        //         {this.renderError()}
+        //         <form  onSubmit={this.handleOnSubmit}>
                     
-                    <label>First Name</label>
-                    <input 
-                        type='text' 
-                        name='f_name' 
-                        onChange={this.handleOnChange}
-                    />
+        //             <label>First Name</label>
+        //             <input 
+        //                 type='text' 
+        //                 name='f_name' 
+        //                 onChange={this.handleOnChange}
+        //             />
 
-                    <label>Last Name</label>
-                    <input 
-                        type='text' 
-                        name='l_name' 
-                        onChange={this.handleOnChange}
-                    />
+        //             <label>Last Name</label>
+        //             <input 
+        //                 type='text' 
+        //                 name='l_name' 
+        //                 onChange={this.handleOnChange}
+        //             />
 
-                    <label>Email</label>
-                    <input 
-                        type='text' 
-                        name='email' 
-                        onChange={this.handleOnChange}
-                     />
+        //             <label>Email</label>
+        //             <input 
+        //                 type='text' 
+        //                 name='email' 
+        //                 onChange={this.handleOnChange}
+        //              />
 
-                    <label>Password</label>
-                    <input 
-                        type='password' 
-                        name='password' 
-                        onChange={this.handleOnChange}
-                     />
+        //             <label>Password</label>
+        //             <input 
+        //                 type='password' 
+        //                 name='password' 
+        //                 onChange={this.handleOnChange}
+        //              />
 
-                    <button type='submit'>Register</button>
-                </form>
-            </div>
-        )
+        //             <button type='submit'>Register</button>
+        //         </form>
+        //     </div>
+        // )
     }
 }
 
