@@ -21,7 +21,6 @@ const AnimalCard = ({ animal }) => {
                     <NavLink to={`/animals/${id }`}>
                         <Card.Link as={'div'}>Details About {name}</Card.Link>
                     </NavLink>
-
                 </Card.Body>
             </Card>
     )

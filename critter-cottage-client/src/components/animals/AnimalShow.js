@@ -1,5 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Badge from 'react-bootstrap/Badge';
+import Container from 'react-bootstrap/Container';
 
 const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
     const genderSym = {
@@ -22,30 +26,47 @@ const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
     const animal = animals.find(animal => animal.id === parseInt(match.params.animalID))
     
     const renderCard = animal => {
-        return(<div>
-            <span>{animal.name} ({genderSym[animal.gender]})</span>
-            <span>{animal.species}: {animal.breed}</span>
-            <br />
-            <span>About {animal.name}: {animal.bio}</span>
-            <div className='img-container' style={container}>
-                <img src={`http://localhost:3001/${animal.image_url}`} alt={animal.name} style={imgStyle} />
-            </div>
-            <br/>
+        return(
+        // <div>
+        //     <span>{animal.name} ({genderSym[animal.gender]})</span>
+        //     <span>{animal.species}: {animal.breed}</span>
+        //     <br />
+        //     <span>About {animal.name}: {animal.bio}</span>
+        //     <div className='img-container' style={container}>
+        //         <img src={`http://localhost:3001/${animal.image_url}`} alt={animal.name} style={imgStyle} />
+        //     </div>
+        //     <br/>
+        //     <Link to={`/animals/${animal.id}/adopt`}>Request to Adopt</Link>
+        // </div>
+        <Card style={{ width: '35rem'}}>
+            <Card.Img width={300} height={300} src={`http://localhost:3001/${animal.image_url}`} />
+            <Card.Body>
+                <Card.Title>{animal.name}</Card.Title>
+                <Card.Subtitle>{animal.breed}</Card.Subtitle>
+                <Card.Subtitle align={'right'}>{genderSym[animal.gender]}</Card.Subtitle>
+                <Card.Text>{animal.bio}</Card.Text>
+            </Card.Body>
             <Link to={`/animals/${animal.id}/adopt`}>Request to Adopt</Link>
-        </div>)
+        </Card>
+        )
     }
 
+    const sendtoEdit = () => {
+        return <Redirect to={`/animals/${animal.id}/edit`} animal={animal} />
+    }
     const renderAdminLinks = (animal) => {
         
         if (animal && currentUser && currentUser.admin) {
             return(
                 <>
-                    <Link to={`${animal.id}/edit`} animal={animal}>Link to Edit Page</Link>
-                    <button 
+                    <Button onClick={sendtoEdit}> 
+                        Edit 
+                    </Button>
+                    <Button variant="danger"
                         onClick={ () => {
                             removeAnimal(animal.id)
                             history.push('/animals')
-                        }}>X</button>
+                        }}> Delete </Button>
                     
                 </>
             )
@@ -53,11 +74,11 @@ const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
     }
 
     return(
-        <React.Fragment>
+        <Container className="justify-content-md-center">
             {animal ? renderCard(animal) : <p>AnimalShow Component</p>}
             <br />
             {renderAdminLinks(animal)}
-        </React.Fragment>
+        </Container>
     )
 }
 

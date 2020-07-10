@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 export default class ReqContainer extends Component {
 
     conditionalRender() {
-        if (!this.props.requests) {
+        if (JSON.stringify(this.props.requests) === '[]') {
             return(
             <h4>
                 You don't have any requests yet.
