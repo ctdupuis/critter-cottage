@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Profile = ({ currentUser}) => {
+const Profile = ({ currentUser }) => {
     const { email, admin, f_name, l_name } = currentUser
 
     const renderProfile = () => {

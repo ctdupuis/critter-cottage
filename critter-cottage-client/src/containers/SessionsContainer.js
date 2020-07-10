@@ -84,7 +84,7 @@ class SessionsContainer extends Component {
                                 {...props}
                             />
                         }
-                    />
+                />
 
             </React.Fragment>
         )

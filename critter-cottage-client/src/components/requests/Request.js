@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Table from 'react-bootstrap/Table';
 
 
 const Request = ({ request, currentUser }) => {
@@ -10,7 +8,7 @@ const Request = ({ request, currentUser }) => {
 
     const regularReqs = () => {
         return(
-        <ListGroup horizontal>
+        <ListGroup horizontal variant="flush">
             <ListGroup.Item>Ref # {id}</ListGroup.Item>
             <ListGroup.Item>For: {animal.name}</ListGroup.Item>
             <ListGroup.Item>Status: {status}</ListGroup.Item>  
@@ -22,7 +20,8 @@ const Request = ({ request, currentUser }) => {
             <ListGroup horizontal>
                 <ListGroup.Item>Ref # {id}</ListGroup.Item>
                 <ListGroup.Item>For: {animal.name}</ListGroup.Item>
-                <ListGroup.Item>Status: {status}</ListGroup.Item>  
+                <ListGroup.Item>Status: {status}</ListGroup.Item>
+                <ListGroup.Item href={`requests/${id}`} action variant="info">Review</ListGroup.Item>  
             </ListGroup>
         )
     }

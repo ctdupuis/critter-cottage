@@ -13,8 +13,7 @@ const Home = props => {
         </Jumbotron>
         <Carousel style={{width: '20rem'}}>
             <Carousel.Item>
-                <img
-                    
+                <img              
                     className="d-block w-100"
                     src="carousel/sleepyseb.jpg"
                     alt="Sebi"

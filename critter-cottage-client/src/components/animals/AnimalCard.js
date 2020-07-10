@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
+import { NavLink } from 'react-router-dom';
 
 const AnimalCard = ({ animal }) => {
 
@@ -17,7 +18,10 @@ const AnimalCard = ({ animal }) => {
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Subtitle>{breed}</Card.Subtitle><Card.Subtitle align={'right'}>{genderSym[gender]}</Card.Subtitle>
-                    <Card.Link href={`/animals/${id}`}>Details About {name}</Card.Link>
+                    <NavLink to={`/animals/${id }`}>
+                        <Card.Link as={'div'}>Details About {name}</Card.Link>
+                    </NavLink>
+
                 </Card.Body>
             </Card>
     )
