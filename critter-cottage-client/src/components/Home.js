@@ -18,7 +18,7 @@ const Home = props => {
         <Container>
             <Row>
                 <Col>
-                <Carousel style={{width: '20rem', align: 'left'}}>
+                <Carousel style={{width: '25rem', align: 'left'}}>
                         <Carousel.Item>
                             <img     
                                 height="600" width="700"         

@@ -1,4 +1,6 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
+import Badge from 'react-bootstrap/Badge';
 
 const Profile = ({ currentUser }) => {
     const { email, admin, f_name, l_name } = currentUser
@@ -6,18 +8,22 @@ const Profile = ({ currentUser }) => {
     const renderProfile = () => {
         if (admin) {
             return(
-            <div>
-                Welcome, {f_name} {l_name}. 👑
-                <br />
-                You are registered with this email: {email}
-            </div>
+                <Card>
+                    <Card.Body>
+                        <Card.Title>Welcome, {f_name} {l_name} <Badge pill variant="primary">Admin</Badge> </Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">{email}</Card.Subtitle>               
+                    </Card.Body>
+                </Card>
             )
         } else {
-            return(<div>
-                Welcome, {f_name} {l_name}.
-                <br />
-                You are registered with this email: {email}
-            </div>)
+            return(
+            <Card>
+                <Card.Body>
+                    <Card.Title>Welcome, {f_name} {l_name}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">{email}</Card.Subtitle>               
+                </Card.Body>
+            </Card>
+            )
         }
     }
     return(

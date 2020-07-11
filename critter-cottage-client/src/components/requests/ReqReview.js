@@ -15,7 +15,6 @@ const ReqReview = ({ requests, match, history, sendReview }) => {
             status: status
         }
         sendReview(reviewdata, history)
-        // history.push('/profile')
     }
 
     const renderReq = () => {
@@ -30,8 +29,8 @@ const ReqReview = ({ requests, match, history, sendReview }) => {
                         Some quick example text to build on the card title and make up the bulk of
                         the card's content.
                         </Card.Text>
-                        <Button variant="primary" onClick={() => handleClick("approved")} value="approved">Approve</Button>
-                        <Button variant="danger"onClick={() => handleClick("denied")} value='denied'>Deny</Button>
+                        <Button variant="success" onClick={() => handleClick("approved")} value="approved">Approve</Button>
+                        <Button variant="danger" onClick={() => handleClick("denied")} value='denied'>Deny</Button>
                     </Card.Body>
                     </Card>
             )

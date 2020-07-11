@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
+import Media from 'react-bootstrap/Media';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
@@ -14,46 +13,48 @@ const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
     
     const renderCard = animal => {
         return(
-        // <div>
-        //     <span>{animal.name} ({genderSym[animal.gender]})</span>
-        //     <span>{animal.species}: {animal.breed}</span>
-        //     <br />
-        //     <span>About {animal.name}: {animal.bio}</span>
-        //     <div className='img-container' style={container}>
-        //         <img src={`http://localhost:3001/${animal.image_url}`} alt={animal.name} style={imgStyle} />
-        //     </div>
-        //     <br/>
-        //     <Link to={`/animals/${animal.id}/adopt`}>Request to Adopt</Link>
-        // </div>
-        <Card style={{ width: '35rem'}}>
-            <Card.Img width={300} height={300} src={`http://localhost:3001/${animal.image_url}`} />
-            <Card.Body>
-                <Card.Title>{animal.name}</Card.Title>
-                <Card.Subtitle>{animal.breed}</Card.Subtitle>
-                <Card.Subtitle align={'right'}>{genderSym[animal.gender]}</Card.Subtitle>
-                <Card.Text>{animal.bio}</Card.Text>
-            </Card.Body>
-            <Link to={`/animals/${animal.id}/adopt`}>Request to Adopt</Link>
-        </Card>
+            <Media>
+            <img
+              width={200}
+              height={200}
+              className="mr-3"
+              src={`http://localhost:3001/${animal.image_url}`}
+              alt={`${animal.name}`}
+            />
+            <Media.Body>
+              <h2>{animal.name} {genderSym[animal.gender]}</h2>
+              <h3>{animal.breed}</h3>
+              <p>
+                {animal.bio}
+              </p>
+            <Button onClick={() => sendToAdopt(history)}>Fill Out Adoption Form</Button>
+            </Media.Body>
+          </Media>
         )
     }
 
-    const sendtoEdit = (history) => {
+    const sendToEdit = (history) => {
         return history.push(`/animals/${animal.id}/edit`)
     }
+
+    const sendToAdopt = history => {
+        return history.push(`/animals/${animal.id}/adopt`)
+    }
+
     const renderAdminLinks = (animal) => {
         
         if (animal && currentUser && currentUser.admin) {
             return(
                 <>
-                    <Button onClick={() => sendtoEdit(history)}> 
+                    <Button onClick={() => sendToEdit(history)}> 
                         Edit 
                     </Button>
                     <Button variant="danger"
                         onClick={ () => {
                             removeAnimal(animal.id)
                             history.push('/animals')
-                        }}> Delete </Button>
+                        }
+                    }> Delete </Button>
                     
                 </>
             )
