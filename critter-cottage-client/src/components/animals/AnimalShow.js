@@ -27,10 +27,23 @@ const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
               <p>
                 {animal.bio}
               </p>
-            <Button onClick={() => sendToAdopt(history)}>Fill Out Adoption Form</Button>
+            {/* <Button onClick={() => sendToAdopt(history)}>Fill Out Adoption Form</Button> */}
+            {conditionalRender(currentUser, history)}
             </Media.Body>
           </Media>
         )
+    }
+
+    const conditionalRender = (currentUser, history) => {
+        if (!currentUser) {
+            return <Button onClick={() => sendToLogin(history)}>Log In to Request Adoption</Button>
+        } else {
+            return <Button onClick={() => sendToAdopt(history)}>Fill Out Adoption Form</Button>
+        }
+    }
+
+    const sendToLogin = (history) => {
+        return history.push('/login')
     }
 
     const sendToEdit = (history) => {

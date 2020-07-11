@@ -3,6 +3,7 @@ import AnimalCard from './AnimalCard';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
+import Alert from 'react-bootstrap/Alert';
 
 
 const AnimalsPage = ({ animals, currentUser, history }) => {
@@ -21,7 +22,6 @@ const AnimalsPage = ({ animals, currentUser, history }) => {
     return(
         <Container>
             <Row className="justify-content-md-center">
-
                 {renderAnimals}
                 <br />
             </Row>

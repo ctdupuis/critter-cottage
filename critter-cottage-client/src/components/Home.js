@@ -41,7 +41,7 @@ const Home = props => {
                             />
                         <Carousel.Caption>
                             <h4>Milo</h4>
-                            <p>The shelter owner and his dog posing</p>
+                            <p>One of our volunteers is very particular towards Milo</p>
                         </Carousel.Caption>
                         </Carousel.Item>
 
