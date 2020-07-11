@@ -30,10 +30,8 @@ class UsersController < ApplicationController
                 logged_in: true,
                 requests: user_reqs.as_json(include: [:animal, :user, except: [:password_digest]]),
                 user: user.as_json(only: [:id, :email, :f_name, :l_name, :admin]) }
-        elsif !user
-            render json: { logged_in: false, error: "That email could not be found"}
-        elsif !user.authenticate(params[:password])
-            render json: { logged_in: false, error: "Invalid password"}
+        else user
+            render json: { logged_in: false, error: "Invalid email/password combination"}
         end
     end
 

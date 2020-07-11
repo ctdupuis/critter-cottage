@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 
 class SignupForm extends Component {
     state = {
@@ -26,26 +27,30 @@ class SignupForm extends Component {
             f_name: this.state.f_name,
             l_name: this.state.l_name
         }
-
-        this.props.signup(userdata)
+        debugger
+        this.props.signup(userdata, this.props.history)
         this.setState({
             email: '',
             password: '',
             f_name: '',
             l_name: ''
         })
-        setTimeout(() => this.props.history.replace('/profile'), 400)
+        
     }
 
-    renderError = () => {
+    renderErrors = () => {
         if (this.props.errors) {
-            return this.props.errors.map(err => <div>{err}</div>)
+            return this.props.errors.map((err, idx) => <Alert key={idx} variant="danger">{err}</Alert>)
         }
     }
 
     render() {
         return (
-            <Form>
+            <Form onSubmit={this.handleOnSubmit}>
+                <div>
+
+            {this.renderErrors()}
+                </div>
                 <h2>Create an Account</h2>
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridEmail">

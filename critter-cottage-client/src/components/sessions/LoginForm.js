@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 
 class LoginForm extends Component {
     state = {
@@ -21,18 +22,18 @@ class LoginForm extends Component {
             password: this.state.password
         }
 
-        this.props.login(userdata)
+        this.props.login(userdata, this.props.history)
         this.setState({
             email: '',
             password: ''
         })
         // setTimeout(() => this.props.history.replace('/profile'), 400)
-        this.props.history.replace('/profile')
+        // this.props.history.replace('/profile')
     }
 
     renderError = () => {
         if (this.props.errors) {
-            return <div className='error'>{this.props.errors}</div>
+            return <Alert variant="danger">{this.props.errors}</Alert>
         }
     }
 
@@ -64,6 +65,7 @@ class LoginForm extends Component {
             //     </form>
             // </div>
             <Form onSubmit={this.handleOnSubmit}>
+                {this.renderError()}
                 <h2>Login to Your Account</h2>
                 <Form.Group controlId="formGroupEmail">
                     <Form.Label>Email address</Form.Label>

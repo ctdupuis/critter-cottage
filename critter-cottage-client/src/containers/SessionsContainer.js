@@ -44,6 +44,7 @@ class SessionsContainer extends Component {
                         (!this.props.currentUser) ? 
                             <SignupForm 
                                 signup={this.props.signup} 
+                                errors={this.props.errors}
                                 {...props} 
                             />  
                             : 
@@ -94,7 +95,8 @@ class SessionsContainer extends Component {
 export default connect(
     state => ({ 
         currentUser: state.userReducer.currentUser,
-        requests: state.reqReducer.requests
+        requests: state.reqReducer.requests,
+        errors: state.userReducer.errors
     }),
     { 
         getLoginStatus,
