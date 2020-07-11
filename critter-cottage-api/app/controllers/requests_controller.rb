@@ -17,7 +17,15 @@ class RequestsController < ApplicationController
 
     def update
         request = Request.find(params[:id])
+        if params[:status] == 'approved'
+            animal = Animal.find(request.animal_id)
+            user = User.find(request.user_id)
+            user.animals << animal
+            animal.adopted = true
+            user.save
+            animal.save
+        end
         request.update(status: params[:status])
-        render json: request
+        render json: { request: request, animal: animal}
     end
 end

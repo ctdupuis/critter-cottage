@@ -22,7 +22,8 @@ export function sendReview(reviewdata, history) {
             status: reviewdata.status
         }, { withCredentials: true })
         const request = response.data
-        dispatch({ type: 'UPDATE_REQUEST', request })
+        dispatch({ type: 'UPDATE_REQUEST', request: request.request })
+        dispatch({ type: 'UPDATE ANIMAL', animal: request.animal })
         history.push('/profile')
     }
 }

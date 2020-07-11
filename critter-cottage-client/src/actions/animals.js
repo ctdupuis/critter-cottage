@@ -41,7 +41,7 @@ export function updateAnimal(animaldata, animalID) {
       bio: animaldata.bio
     }, { withCredentials: true })
     const animal = response.data
-    dispatch({ type: 'UPDATE_ANIMAL', animal })
+    dispatch({ type: 'UPDATE_ANIMAL', animal: animal })
   }
 }
 

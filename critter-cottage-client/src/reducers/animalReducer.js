@@ -27,7 +27,7 @@ export default function animalReducer(
                 animals: [...keepers, action.animal]
             }
         case 'REMOVE_ANIMAL':
-            keepers = state.animals.filter(an => an.id !== action.animal.id)
+            keepers = state.animals.filter(an => an.id !== action.animal.id) 
             return {
                 animals: [...keepers]
             }
