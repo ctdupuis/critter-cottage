@@ -1,26 +1,13 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import Badge from 'react-bootstrap/Badge';
 import Container from 'react-bootstrap/Container';
 
 const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
     const genderSym = {
         'Male': '♂',
         'Female': '♀'
-    }
-    const container = {
-        height: "auto",
-        width: "30%",
-        padding: 20,
-        border: 20,
-        margin: "0 auto"
-    }
-    const imgStyle = {
-        height: "auto",
-        width: "100%",
-        border: 5
     }
    
     const animal = animals.find(animal => animal.id === parseInt(match.params.animalID))
@@ -51,15 +38,15 @@ const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
         )
     }
 
-    const sendtoEdit = () => {
-        return <Redirect to={`/animals/${animal.id}/edit`} animal={animal} />
+    const sendtoEdit = (history) => {
+        return history.push(`/animals/${animal.id}/edit`)
     }
     const renderAdminLinks = (animal) => {
         
         if (animal && currentUser && currentUser.admin) {
             return(
                 <>
-                    <Button onClick={sendtoEdit}> 
+                    <Button onClick={() => sendtoEdit(history)}> 
                         Edit 
                     </Button>
                     <Button variant="danger"

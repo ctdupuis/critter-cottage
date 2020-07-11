@@ -125,7 +125,7 @@ export default class AnimalEdit extends Component {
                     <Form.File name="image" onChange={this.handleOnChange} />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button variant="success" type="submit">
                     Save Changes
                 </Button>
             </Form>
