@@ -9,7 +9,6 @@ export const login = (userdata, history) => {
             }, { withCredentials: true }
         )
         const resp = response.data
-        console.log("user data right after login", resp)
             if (resp.logged_in === true) {
                 const user = resp.user
                 const reqs = resp.requests

@@ -17,14 +17,14 @@ const AnimalsPage = ({ animals, currentUser, history }) => {
     const speciesArray = animals.map(animal => animal.species).filter( onlyUnique )
 
     const filterTabs = (animals, list) => {
-        const tabs = list.map(spec => {
+        const tabs = list.map((spec, idx) => {
             const filtered = animals.filter(animal => animal.species === spec)
             const render = filtered.map(animal => <AnimalCard key={animal.id} animal={animal} />)
             const title = spec.concat('s')
             return(
-                <Tabs.Tab eventKey={spec} title={title}>
+                <Tabs.Tab key={idx} eventKey={spec} title={title}>
                     <Container fluid>
-                        <Row clasName="justify-content-md-center">
+                        <Row className="justify-content-md-center">
                             {render}
                         </Row>
                     </Container>
@@ -47,7 +47,7 @@ const AnimalsPage = ({ animals, currentUser, history }) => {
             <Tabs defaultActiveKey="all">
                 <Tabs.Tab eventKey="all" title="All">
                     <Container fluid>
-                        <Row clasName="justify-content-md-center">
+                        <Row className="justify-content-md-center">
                             {allAnimals}
                         </Row>
                     </Container>

@@ -47,7 +47,6 @@ export function updateAnimal(animaldata, animalID) {
 
 export function removeAnimal(animalID) {
   return async (dispatch) => {
-    console.log('hit delete action in reducer', animalID)
     dispatch({ type: 'START_DESTROY' })
     const response = await axios.delete(`http://localhost:3001/animals/${animalID}`, {
       withCredentials: true

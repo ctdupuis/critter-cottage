@@ -27,15 +27,17 @@ const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
               <p>
                 {animal.bio}
               </p>
-            {/* <Button onClick={() => sendToAdopt(history)}>Fill Out Adoption Form</Button> */}
-            {conditionalRender(currentUser, history)}
+            {conditionalRender(currentUser, history, animal)}
             </Media.Body>
           </Media>
         )
     }
 
-    const conditionalRender = (currentUser, history) => {
-        if (!currentUser) {
+    const conditionalRender = (currentUser, history, animal) => {
+        if (animal.adopted) {
+            return <Button disabled>{animal.name} was adopted! Yay!</Button>
+        }
+        else if (!currentUser) {
             return <Button onClick={() => sendToLogin(history)}>Log In to Request Adoption</Button>
         } else {
             return <Button onClick={() => sendToAdopt(history)}>Fill Out Adoption Form</Button>
