@@ -7,7 +7,8 @@ export function sendAdoptionForm(formdata, history) {
             email: formdata.email,
             f_name: formdata.f_name,
             l_name: formdata.l_name,
-            experience:formdata.experience
+            experience: formdata.experience,
+            comments: formdata.comments
         }, { withCredentials:true })
         const request = response.data
         dispatch({ type: 'ADD_REQUEST', request })

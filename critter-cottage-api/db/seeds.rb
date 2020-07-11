@@ -43,12 +43,11 @@ end
 
 users.each{ |user| User.create(user) }
 
-# Riley Ward requesting to adopt Li'l Sebastian
-# Request.create(user_id: 3, admin_id: 1, animal_id: 3)
+
 reqs = [
-    {user_id: 3, animal_id: 3, admin_id: 1},
-    {user_id: 4, animal_id: 2, admin_id: 1},
-    {user_id: 2, animal_id: 1, admin_id: 1}
+    {user_id: 3, animal_id: 3, admin_id: 1, experience: true, comments: "I've always wanted a Mini Pony!"},
+    {user_id: 4, animal_id: 2, admin_id: 1, experience: false, comments: "I LOVE Labradors, especially cuddly ones!"},
+    {user_id: 2, animal_id: 1, admin_id: 1, experience: true, comments: "I can't stop looking at that face. Please approve!"}
 ]
 
 reqs.each{ |req| Request.create(req) }

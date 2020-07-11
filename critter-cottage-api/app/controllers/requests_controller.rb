@@ -6,7 +6,8 @@ class RequestsController < ApplicationController
                 admin_id: 1,
                 user_id: @current_user.id,
                 animal_id: params[:animal_id],
-                experience: params[:experience]
+                experience: params[:experience], 
+                comments: params[:comments]
             )
             render json: request, include: [:animal]
         else

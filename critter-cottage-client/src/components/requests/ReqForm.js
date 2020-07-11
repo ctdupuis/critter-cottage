@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 
 export default class ReqForm extends Component {
     state = {
@@ -6,6 +9,7 @@ export default class ReqForm extends Component {
         l_name: '',
         email: '',
         experience: '',
+        comments: '',
         animalID: this.props.match.params.animalID
     }
     
@@ -17,7 +21,6 @@ export default class ReqForm extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault();
-        debugger
         this.props.sendAdoptionForm(this.state, this.props.history)
     }
 
@@ -25,58 +28,48 @@ export default class ReqForm extends Component {
         const animal = this.props.animals.find(an => an.id === parseInt(this.props.match.params.animalID) )
        
         return (
-            <div>
+            <Container>
                 <h3>Please fill out the form below for <strong>{animal.name}</strong></h3>
-                <form onSubmit={this.handleOnSubmit}>
+                <Form onSubmit={this.handleOnSubmit}>
+                    <Form.Row>
+                        <Form.Group controlId="formGridEmail">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control name="email" type="text" onChange={this.handleOnChange} />
+                        </Form.Group>
+                    </Form.Row>
+                    
+                    <Form.Row>
+                        <Form.Group controlId="formBasicFName">
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Control name="f_name" type="text" onChange={this.handleOnChange} />
+                        </Form.Group>
 
-                    <label>First Name</label>
-                    <input 
-                        type='text'
-                        name='f_name'
-                        value={this.state.f_name}
-                        onChange={this.handleOnChange}
-                    />
-                    <br />
+                        <Form.Group controlId="formBasicLName">
+                            <Form.Label>Last Name</Form.Label>
+                            <Form.Control name="l_name" type="text" onChange={this.handleOnChange} />
+                        </Form.Group>
+                    </Form.Row>
 
-                    <label>Last Name</label>
-                    <input 
-                        type='text'
-                        name='l_name'
-                        value={this.state.l_name}
-                        onChange={this.handleOnChange}
-                    />
-                    <br />
+                    <Form.Row>
+                        <Form.Group controlId="formBasicCheckbox">
+                            <Form.Label>Do you have any experience caring for animals?</Form.Label>
+                            <Form.Check type="radio" name="experience" label="Yes" value={true} onChange={this.handleOnChange} />
+                            <Form.Check type="radio" name="experience" label="No" value={false} onChange={this.handleOnChange} />
+                        </Form.Group>
+                    </Form.Row>
 
-                    <label>Email</label>
-                    <input
-                        type='text'
-                        name='email'
-                        value={this.state.email}
-                        onChange={this.handleOnChange}
-                    />
-                    <br />
+                    <Form.Row>
+                        <Form.Group controlId="formBasicComments">
+                            <Form.Label>Please add any additional comments below:</Form.Label>
+                            <Form.Control name="comments" placeholder="Additional Comments..." onChange={this.handleOnChange} />
+                        </Form.Group>
+                    </Form.Row>
 
-                    <label>Have you had any experience owning or caring for an animal?</label>
-                    <br />
-                    <input 
-                        type='radio'
-                        value={true}
-                        name='experience'
-                        onChange={this.handleOnChange}
-                        checked={this.state.experience === 'true'}
-                    /> Yes
-                    <input
-                        type='radio'
-                        value={false}
-                        name='experience'
-                        onChange={this.handleOnChange}
-                        checked={this.state.experience === 'false'}
-                    />  No
-                    <br />
-
-                    <input type="submit" />
-                </form>
-            </div>
+                    <Button variant="primary" type="submit">
+                        Submit Form
+                    </Button>
+                </Form>
+            </Container>
         )
     }
 }
