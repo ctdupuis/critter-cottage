@@ -31,14 +31,14 @@ const ReqReview = ({ requests, match, history, sendReview }) => {
                 <Card>
                     <Card.Body>
                         <Card.Title>Adoption Request for {animal.name}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">Submitted by {user.f_name} {user.l_name} </Card.Subtitle>
-                        <Card.Subtitle>User email: {user.email}</Card.Subtitle>
+                        <Card.Subtitle>Submitted by {user.f_name} {user.l_name} </Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted">{user.email}</Card.Subtitle>
                         <br />
                         <Card.Subtitle>
                             Prior Experience: {expCheck(experience)}
                         </Card.Subtitle>
                         <br />
-                        <Card.Subtitle>Additional Comments from User:</Card.Subtitle>
+                        <Card.Subtitle>Additional Comments from {user.f_name}:</Card.Subtitle>
                         <Card.Text>
                             {comments}
                         </Card.Text>

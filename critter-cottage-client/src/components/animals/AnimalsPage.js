@@ -3,13 +3,36 @@ import AnimalCard from './AnimalCard';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
-import Alert from 'react-bootstrap/Alert';
-
+import Tabs from 'react-bootstrap/Tabs'
 
 const AnimalsPage = ({ animals, currentUser, history }) => {
-    const renderAnimals = animals.map(animal => {
+    const allAnimals = animals.map(animal => {
         return (<AnimalCard key={animal.id} animal={animal} />)
     })
+
+    const onlyUnique = (value, index, self) => { 
+        return self.indexOf(value) === index;
+    }
+
+    const speciesArray = animals.map(animal => animal.species).filter( onlyUnique )
+
+    const filterTabs = (animals, list) => {
+        const tabs = list.map(spec => {
+            const filtered = animals.filter(animal => animal.species === spec)
+            const render = filtered.map(animal => <AnimalCard key={animal.id} animal={animal} />)
+            const title = spec.concat('s')
+            return(
+                <Tabs.Tab eventKey={spec} title={title}>
+                    <Container fluid>
+                        <Row clasName="justify-content-md-center">
+                            {render}
+                        </Row>
+                    </Container>
+                </Tabs.Tab>
+            )
+        })
+        return tabs
+    }
 
     const renderFormLink = () => {
         if (currentUser && currentUser.admin) {
@@ -20,12 +43,20 @@ const AnimalsPage = ({ animals, currentUser, history }) => {
     }
 
     return(
-        <Container>
-            <Row className="justify-content-md-center">
-                {renderAnimals}
-                <br />
-            </Row>
-                {renderFormLink()}
+        <Container fluid>
+            <Tabs defaultActiveKey="all">
+                <Tabs.Tab eventKey="all" title="All">
+                    <Container fluid>
+                        <Row clasName="justify-content-md-center">
+                            {allAnimals}
+                        </Row>
+                    </Container>
+                </Tabs.Tab>
+                {filterTabs(animals, speciesArray)}
+
+            </Tabs>
+            <br />
+            {renderFormLink()}
         </Container>
     )
 }
