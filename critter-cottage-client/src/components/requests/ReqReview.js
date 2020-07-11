@@ -14,8 +14,8 @@ const ReqReview = ({ requests, match, history, sendReview }) => {
             id: id,
             status: status
         }
-        sendReview(reviewdata)
-        history.push('/profile')
+        sendReview(reviewdata, history)
+        // history.push('/profile')
     }
 
     const renderReq = () => {

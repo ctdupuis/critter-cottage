@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function sendAdoptionForm(formdata) {
+export function sendAdoptionForm(formdata, history) {
     return async dispatch => {
         const response = await axios.post('http://localhost:3001/requests', {
             animal_id: formdata.animalID,
@@ -11,16 +11,17 @@ export function sendAdoptionForm(formdata) {
         }, { withCredentials:true })
         const request = response.data
         dispatch({ type: 'ADD_REQUEST', request })
+        history.push('/profile')
     }
 }
 
-export function sendReview(reviewdata) {
+export function sendReview(reviewdata, history) {
     return async dispatch => {
-        console.log(reviewdata)
         const response = await axios.put(`http://localhost:3001/requests/${reviewdata.id}`, {
             status: reviewdata.status
         }, { withCredentials: true })
         const request = response.data
         dispatch({ type: 'UPDATE_REQUEST', request })
+        history.push('/profile')
     }
 }

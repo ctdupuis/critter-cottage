@@ -17,7 +17,7 @@ export default function ReqReducer(
         case 'UPDATE_REQUEST':
             const keepers = state.requests.filter(req => req.id !== action.request.id)
             return {
-                request: [...keepers, action.request]
+                requests: [...keepers, action.request]
             }
         case 'RESET_REQS':
             return {

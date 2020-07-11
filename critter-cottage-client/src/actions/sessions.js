@@ -1,14 +1,13 @@
 import axios from 'axios';
 
 export const login = (userdata, history) => {
-    // debugger
         return  async (dispatch) => {
         dispatch({ type: 'START_SESSION_REQUEST' })
         const response = await axios.post('http://localhost:3001/login', {
                 email: userdata.email,
                 password: userdata.password
             }, { withCredentials: true }
-            )
+        )
         const resp = response.data
         console.log("user data right after login", resp)
             if (resp.logged_in === true) {
@@ -21,7 +20,6 @@ export const login = (userdata, history) => {
                 const err = resp.error
                 dispatch({ type: 'LOGIN_ERROR', err })
                 history.push('/profile')
-                //try pushing history or returning history here
             }
     }
 }
@@ -36,15 +34,13 @@ export const signup = (userdata, history) => {
             l_name: userdata.l_name
         }, { withCredentials: true }
         )
-        const resp = response.data
-        debugger
+        const resp = response.data     
         if (resp.status === "created") {
             const user = resp.user
             dispatch({ type: 'LOGIN_USER', user })
             history.push('/profile')
         } else {
-            const err = resp.errors
-            debugger
+            const err = resp.errors           
             dispatch({ type: 'LOGIN_ERROR', err })
             history.push('/signup')
         }

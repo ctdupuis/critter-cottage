@@ -17,7 +17,8 @@ export default class ReqForm extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault();
-        this.props.sendAdoptionForm(this.state)
+        debugger
+        this.props.sendAdoptionForm(this.state, this.props.history)
     }
 
     render() {
