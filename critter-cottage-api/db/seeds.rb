@@ -10,7 +10,8 @@ users = [
     {email: 'boss@admin.com', password: 'boss', admin: true, f_name: 'Top', l_name: 'Dog'},
     {email: 'tnook@nookinc.com', password: 'nook', admin: false, f_name: 'Tom', l_name: 'Nook'},
     {email: 'dutydog@cod.com', password: 'coddog', admin: false, f_name: 'Riley', l_name: 'Ward'},
-    {email: 'gibby@icarly.com', password: 'gibby', admin: false, f_name: 'Noah', l_name: 'Munck'}
+    {email: 'gibby@icarly.com', password: 'gibby', admin: false, f_name: 'Noah', l_name: 'Munck'},
+    {email: 'fixme@session.com', password: 'ugh', admin: false, f_name: 'Stupid', l_name: 'Error'}
 
 ]
 
@@ -29,7 +30,6 @@ animals = [
     {name: 'Richard', gender: 'Male', species: 'Bird', breed: 'Parakeet', bio: "Richard is very, very shy. He does not handle at all, and likes to keep to himself. He's only talkative if no one else is in the room and often hides when someone walks in to check on him. Richard would really only blend well in a very quiet, calm, solitary household."}
 ]
 
-# {name: 'Cooper', gender: 'Male', species: 'Dog', breed: 'Poodle'},
 # {name: 'Flick', gender: 'Male', species: 'Lizard', breed: 'Red Dragon'},
 # {name: 'Sofie', gender: 'Female', species: 'Dog', breed: 'Maltese'},
 
