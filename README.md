@@ -1,4 +1,4 @@
-### Critter Cottage
+# Critter Cottage
 
 ## About
 
@@ -8,16 +8,16 @@ Critter Cottage is a web app designed to manage data for an animal shelter. Basi
 
 In order to run this app in your local environment, fork and clone this repo.
 
-# API Setup
+### API Setup
 
 Navigate to the root folder by executing `cd critter-cottage-api`.
 From there, run `bundle` and then `rails db:migrate`
 After those processes are complete, run `rails s` to start the server
 
-# Client-side Setup
+### Client-side Setup
 
 All you need to do client-side is to cd into `critter-cottage-client` and run `npm start` or `yarn start`
 
-## Disclosure
+# Disclosure
 
 Critter Cottage is *NOT* an actual shelter. All animals on display live in loving homes, apart from Li'l Sebastian who is a fictional character. Obviously, any approved adoption requests will not guarantee a user to receive an animal.
