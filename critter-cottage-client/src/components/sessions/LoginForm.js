@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class LoginForm extends Component {
     state = {
@@ -38,8 +39,18 @@ class LoginForm extends Component {
     }
 
     clearError = () => {
-        document.querySelector('.error').remove()
-       
+        document.querySelector('.error').remove() 
+    }
+
+    useOmniAuth = () => {
+        // console.log('works')
+        // const resp = await axios.get('http://localhost:3001/auth/facebook', { withCredentials: true })
+        // const data = resp.data
+        // debugger
+        // FB.login(function(response) {
+        //     console.log(response)
+        // })
+
     }
 
     render() {
@@ -65,6 +76,7 @@ class LoginForm extends Component {
                 
                 <br />
                 <h5>Don't have an account? <Link to='/signup'>Click here to Sign Up</Link></h5>
+                <div className="fb-login-button" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="true" data-use-continue-as="true" data-width=""></div>
             </Container>
         )
     }
