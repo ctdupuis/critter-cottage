@@ -46,13 +46,13 @@ class AnimalsContainer extends Component {
 
                     <Route exact path={'/animals/:animalID/edit'}
                         render={routerProps => 
-                        (this.props.currentUser && this.props.currentUser.admin) ?
+                        // (this.props.currentUser && this.props.currentUser.admin) ?
                             <AnimalEdit {...routerProps} 
                                 animals={this.props.animals} 
-                                updateAnimal={this.props.updateAnimal} 
+                                updateAnimal={this.props.updateAnimal}
                             /> 
-                            :
-                            <Redirect to={'/animals'} />
+                        //     :
+                        //     <Redirect to={'/animals'} />
                         }
                     />
 

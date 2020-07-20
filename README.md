@@ -11,7 +11,9 @@ In order to run this app in your local environment, fork and clone this repo.
 ### API Setup
 
 Navigate to the root folder by executing `cd critter-cottage-api`.
+
 From there, run `bundle` and then `rails db:migrate`
+
 After those processes are complete, run `rails s` to start the server
 
 ### Client-side Setup
@@ -20,4 +22,4 @@ All you need to do client-side is to cd into `critter-cottage-client` and run `n
 
 # Disclosure
 
-Critter Cottage is *NOT* an actual shelter. All animals on display live in loving homes, apart from Li'l Sebastian who is a fictional character. Obviously, any approved adoption requests will not guarantee a user to receive an animal.
+*Critter Cottage is **NOT** an actual shelter. All animals on display live in loving homes, apart from Li'l Sebastian who is a fictional character. Obviously, any approved adoption requests will not guarantee a user to receive an animal.*

@@ -51,7 +51,6 @@ export const getLoginStatus = () => {
         dispatch({ type: 'START_SESSION_REQUEST' })
         const response = await axios.get('http://localhost:3001/logged_in', { withCredentials: true })
         const data = response.data
-        console.log('result of session check', data)
         if (data.logged_in === true ) {
             const user = data.user
             const reqs = data.requests

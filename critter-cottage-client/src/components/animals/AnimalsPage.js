@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Tabs from 'react-bootstrap/Tabs'
 
 const AnimalsPage = ({ animals, currentUser, history }) => {
+    console.log(5)
     const allAnimals = animals.map(animal => {
         return (<AnimalCard key={animal.id} animal={animal} />)
     })

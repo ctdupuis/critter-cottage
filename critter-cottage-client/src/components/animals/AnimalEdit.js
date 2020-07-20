@@ -31,8 +31,10 @@ export default class AnimalEdit extends Component {
     }
 
     handleOnSubmit = event => {
+        console.log(2)
         event.preventDefault()
         this.props.updateAnimal(this.state, parseInt(this.props.match.params.animalID))
+        console.log(3)
         this.setState({
             name: '',
             gender: '',
@@ -41,7 +43,7 @@ export default class AnimalEdit extends Component {
             bio: '',
             image: undefined
         })
-
+        console.log(4)
         this.props.history.push('/animals')
     }
 
