@@ -36,28 +36,14 @@ const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
     const conditionalRender = (currentUser, history, animal) => {
         if (animal.adopted) {
             return <Button disabled>{animal.name} was adopted! Yay!</Button>
-        }
-        else if (!currentUser) {
+        } else if (!currentUser) {
             return <Button onClick={() => sendToLogin(history)}>Log In to Request Adoption</Button>
         } else {
-            return <Button onClick={() => sendToAdopt(history)}>Fill Out Adoption Form</Button>
+            return renderAdminLinks(animal)
         }
     }
-
-    const sendToLogin = (history) => {
-        return history.push('/login')
-    }
-
-    const sendToEdit = (history) => {
-        return history.push(`/animals/${animal.id}/edit`)
-    }
-
-    const sendToAdopt = history => {
-        return history.push(`/animals/${animal.id}/adopt`)
-    }
-
-    const renderAdminLinks = (animal) => {
-        
+    
+    const renderAdminLinks = (animal) => {     
         if (animal && currentUser && currentUser.admin) {
             return(
                 <>
@@ -73,14 +59,27 @@ const AnimalShow = ({ animals, match, removeAnimal, history, currentUser }) => {
                     
                 </>
             )
+        } else {
+            return<Button onClick={() => sendToAdopt(history)}>Fill Out Adoption Form</Button>
         }
     }
+
+    const sendToLogin = history => {
+        return history.push('/login')
+    }
+
+    const sendToEdit = history => {
+        return history.push(`/animals/${animal.id}/edit`)
+    }
+
+    const sendToAdopt = history => {
+        return history.push(`/animals/${animal.id}/adopt`)
+    }
+
 
     return(
         <Container className="justify-content-md-center">
             {animal ? renderCard(animal) : <p>AnimalShow Component</p>}
-            <br />
-            {renderAdminLinks(animal)}
         </Container>
     )
 }

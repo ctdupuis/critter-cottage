@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button'
+// import Button from 'react-bootstrap/Button'
 import { NavLink } from 'react-router-dom';
 
 const AnimalCard = ({ animal }) => {
@@ -21,7 +21,6 @@ const AnimalCard = ({ animal }) => {
                     <NavLink to={`/animals/${id }`}>
                         <Card.Link as={'div'}>Details About {name}</Card.Link>
                     </NavLink>
-                    <Button>Like!</Button>
                 </Card.Body>
             </Card>
     )
