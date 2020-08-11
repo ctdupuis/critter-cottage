@@ -1,8 +1,10 @@
 import axios from 'axios';
+const deploymentURI = 'https://critter-cottage-api.herokuapp.com'
+const developmentURI = 'http://localhost:3001'
 
 export function sendAdoptionForm(formdata, history) {
     return async dispatch => {
-        const response = await axios.post('http://localhost:3001/requests', {
+        const response = await axios.post(`${deploymentURI}/requests`, {
             animal_id: formdata.animalID,
             email: formdata.email,
             f_name: formdata.f_name,
@@ -18,7 +20,7 @@ export function sendAdoptionForm(formdata, history) {
 
 export function sendReview(reviewdata, history) {
     return async dispatch => {
-        const response = await axios.put(`http://localhost:3001/requests/${reviewdata.id}`, {
+        const response = await axios.put(`${deploymentURI}/requests/${reviewdata.id}`, {
             status: reviewdata.status
         }, { withCredentials: true })
         const request = response.data

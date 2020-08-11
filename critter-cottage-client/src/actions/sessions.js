@@ -1,9 +1,11 @@
 import axios from 'axios';
+const deploymentURI = 'https://critter-cottage-api.herokuapp.com'
+const developmentURI = 'http://localhost:3001'
 
 export const login = (userdata, history) => {
         return  async (dispatch) => {
         dispatch({ type: 'START_SESSION_REQUEST' })
-        const response = await axios.post('http://localhost:3001/login', {
+        const response = await axios.post(`${deploymentURI}/login`, {
                 email: userdata.email,
                 password: userdata.password
             }, { withCredentials: true }
@@ -26,7 +28,7 @@ export const login = (userdata, history) => {
 export const signup = (userdata, history) => {
     return async (dispatch) => {
         dispatch({ type: 'START_SESSION_REQUEST' })
-        const response = await axios.post('http://localhost:3001/signup', {
+        const response = await axios.post(`${deploymentURI}/signup`, {
             email: userdata.email,
             password: userdata.password,
             f_name: userdata.f_name,
@@ -49,7 +51,7 @@ export const signup = (userdata, history) => {
 export const getLoginStatus = () => {
     return async (dispatch) => {
         dispatch({ type: 'START_SESSION_REQUEST' })
-        const response = await axios.get('http://localhost:3001/logged_in', { withCredentials: true })
+        const response = await axios.get(`${deploymentURI}/logged_in`, { withCredentials: true })
         const data = response.data
         if (data.logged_in === true ) {
             const user = data.user
@@ -62,7 +64,7 @@ export const getLoginStatus = () => {
 
 export const endSession = () => {
     return (dispatch) =>  {
-        axios.get('http://localhost:3001/logout', { withCredentials: true})
+        axios.get(`${deploymentURI}/logout`, { withCredentials: true})
         .then(res => {
             dispatch({ type: 'LOGOUT_USER' })
             dispatch({ type: 'RESET_REQS' })
