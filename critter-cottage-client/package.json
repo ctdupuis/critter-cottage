@@ -21,16 +21,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build": "cd client && yarn install && yarn build && cd ..",
-    "deploy": "cp -a client/build/. public/",
-    "postinstall": "yarn build && yarn deploy && echo 'Client built!'"
-  },
-  "engines": {
-    "yarn": "1.21.1",
-    "npm": "6.11.3",
-    "node": "12.11.1"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
