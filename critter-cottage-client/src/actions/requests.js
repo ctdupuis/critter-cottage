@@ -1,6 +1,6 @@
 import axios from 'axios';
 const deploymentURI = 'https://critter-cottage-api.herokuapp.com'
-const developmentURI = 'http://localhost:3001'
+const developmentURI = 'http://localhost:5000'
 
 export function sendAdoptionForm(formdata, history) {
     return async dispatch => {
