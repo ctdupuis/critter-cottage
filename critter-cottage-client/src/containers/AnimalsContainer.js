@@ -22,7 +22,6 @@ class AnimalsContainer extends Component {
         return (
             <React.Fragment>
                 <Switch>
-
                     <Route exact path={'/animals/new'} 
                         render={routerProps => 
                         (this.props.currentUser && this.props.currentUser.admin) ?

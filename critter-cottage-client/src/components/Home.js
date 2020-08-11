@@ -79,7 +79,7 @@ const Home = props => {
                         <Card.Body>
                             <Card.Img src="home/volunteer.jpeg" />
                             <Card.Title>Volunteers Needed!</Card.Title>
-                            <Card.Text>We are always in need of some extra paws to help take care of the animals. Volunteer tasks include cleaning, handling, and exercising the animals. Volunteers must be at least 18 years of age, or 16 with parent supervision. If you are interested in volunteering, please contact <strong>crittercottage@gmail.com</strong> with your information or come stop by at 1 Long Walk Ln, Lafayette, LA and fill out a form.</Card.Text>
+                            <Card.Text>We are always in need of some extra paws to help take care of the animals. Volunteer tasks include cleaning, handling, and exercising the animals. Volunteers must be at least 18 years of age, or 16 with parent supervision. If you are interested in volunteering, please contact <strong>crittercottage@gmail.com</strong> with your information or come stop by at <strong>1 Long Walk Ln, Lafayette, LA</strong> and fill out a form.</Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>
